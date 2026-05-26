@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Club Rossi — A Nano Resort in Lake Tahoe · Slide Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f4;
+    --paper: #ffffff;
+    --ink: #1f1d1a;
+    --ink-muted: #6b655d;
+    --ink-soft: #9a9288;
+    --granite: #4a5056;
+    --moss: #5c6b4e;
+    --ember: #b25c2c;
+    --ember-soft: #d48a5a;
+    --sage: #8a9478;
+    --warm-stone: #c9b99a;
+    --line: #e8e2d6;
+    --line-soft: #f0ebe0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    padding: 40px 20px;
+  }
+
+  .page {
+    max-width: 1180px;
+    margin: 0 auto;
+    background: var(--paper);
+    padding: 60px 70px;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+    border-radius: 4px;
+  }
+
+  /* ——— Header ——— */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 56px;
+  }
+  .brand {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .brand-sub {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+  .meta {
+    text-align: right;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-soft);
+    line-height: 1.8;
+  }
+  .meta .value { color: var(--ink); font-weight: 500; }
+
+  /* ——— Type ——— */
+  .eyebrow {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ember);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+  h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--moss);
+  }
+  .lede {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    line-height: 1.55;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink-muted);
+    max-width: 780px;
+  }
+
+  /* ——— Hero title hierarchy (Slide 1.0) ——— */
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    color: var(--ember);
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-size: 96px;
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.028em;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .hero-subtitle {
+    font-family: 'Fraunces', serif;
+    font-size: 34px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.2;
+    letter-spacing: -0.008em;
+    color: var(--moss);
+    margin-bottom: 28px;
+  }
+  .hero-subtitle em { font-style: italic; font-weight: 300; color: var(--moss); }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1.18;
+    color: var(--ink);
+    margin-bottom: 12px;
+    letter-spacing: -0.012em;
+  }
+  h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--moss);
+  }
+
+  .section-lede {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink-muted);
+    margin-bottom: 32px;
+    max-width: 760px;
+    line-height: 1.55;
+  }
+
+  /* ——— Section labels (ember rule) ——— */
+  .section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ember);
+    font-weight: 600;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--ember);
+  }
+
+  /* ——— Slide wrapper ——— */
+  .slide {
+    padding: 56px 0;
+    border-top: 1px solid var(--line);
+  }
+  .slide:first-of-type { border-top: none; padding-top: 0; }
+
+  .slide-index {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    letter-spacing: 0.01em;
+  }
+
+  /* ——— Vision watermark ——— */
+  .vision-mark {
+    display: inline-block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: 500;
+    margin-bottom: 18px;
+  }
+
+  /* ——— Hero image (slide 1.0) ——— */
+  .hero-image {
+    position: relative;
+    margin-top: 36px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #f0ebe0;
+  }
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .hero-caption {
+    margin-top: 14px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  .hero-caption .right {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    color: var(--ink-muted);
+    font-size: 13px;
+  }
+
+  /* ——— Zone grid (slide 1.1) ——— */
+  .zones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 36px;
+  }
+  .zone {
+    background: #fbf8f0;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .zone-image {
+    aspect-ratio: 4 / 3;
+    background: #ede0c0;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .zone-image.placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-soft);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    background: linear-gradient(135deg, #efe5d0 0%, #e4d5b0 100%);
+    text-align: center;
+    padding: 20px;
+  }
+  .zone-image.placeholder span { max-width: 180px; line-height: 1.5; }
+  .zone-body { padding: 20px 22px 24px; }
+  .zone-name {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .zone-sub {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ember);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .zone-desc {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+  }
+
+  /* ——— Grounds elements (slide 1.2) ——— */
+  .grounds-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 40px;
+    margin-top: 32px;
+  }
+  .ground-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .ground-photo {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 3px;
+    background: #ede0c0;
+  }
+  .ground-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .ground-photo.placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-soft);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    background: linear-gradient(135deg, #efe5d0 0%, #e4d5b0 100%);
+    text-align: center;
+    padding: 20px;
+  }
+  .ground-body { }
+  .ground-name {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .ground-sub {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ember);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .ground-desc {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+  }
+
+  /* ——— Floor plan grid (slides 1.3, 1.4) ——— */
+  .floor-block { margin-top: 38px; }
+  .floor-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--granite);
+    font-weight: 600;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .floor-label .note {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    color: var(--ink-muted);
+  }
+  .floor-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+  .floor-plan {
+    background: #fbf8f0;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+  }
+  .floor-plan-caption {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .floor-plan-img {
+    background: #fff;
+    border: 1px solid var(--line-soft);
+    border-radius: 2px;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .floor-plan-img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .floor-plan-img.placeholder {
+    color: var(--ink-soft);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    background: linear-gradient(135deg, #efe5d0 0%, #e4d5b0 100%);
+    text-align: center;
+    padding: 20px;
+  }
+
+  /* ——— Narrative paragraph blocks ——— */
+  .narrative {
+    max-width: 780px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-top: 22px;
+  }
+  .narrative p { margin-bottom: 14px; }
+
+  /* ——— Clubhouse game-room options (slide 1.4) ——— */
+  .options-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-top: 36px;
+  }
+  .option {
+    background: #fbf8f0;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .option-img {
+    aspect-ratio: 16 / 10;
+    background: #ede0c0;
+    overflow: hidden;
+  }
+  .option-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .option-img.placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-soft);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    background: linear-gradient(135deg, #efe5d0 0%, #e4d5b0 100%);
+    text-align: center;
+    padding: 20px;
+  }
+  .option-body { padding: 18px 22px 22px; }
+  .option-tag {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ember);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .option-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .option-desc {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+  }
+
+  /* ——— Bridge slide ——— */
+  .bridge {
+    background: #fbf7ef;
+    border-left: 3px solid var(--ember);
+    padding: 44px 48px;
+    margin: 32px 0;
+  }
+  .bridge .eyebrow { margin-bottom: 10px; }
+  .bridge h2 { margin-bottom: 14px; }
+  .bridge p {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    font-weight: 300;
+    font-style: italic;
+    max-width: 780px;
+  }
+
+  /* ——— Section divider ——— */
+  .section-cover {
+    text-align: left;
+    padding: 72px 0 56px;
+    border-top: 2px solid var(--ink);
+    margin-top: 48px;
+  }
+  .section-cover .section-number {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--ember);
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .section-cover h1 { font-size: 48px; margin-bottom: 14px; }
+
+  /* ——— Summary table / budget block (slides 2.0 & 2.6) ——— */
+  .budget {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: stretch;
+    margin-top: 32px;
+  }
+  .budget-figure {
+    text-align: center;
+    padding: 44px 24px;
+    background: var(--ink);
+    color: white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .budget-range {
+    font-family: 'Fraunces', serif;
+    font-size: 54px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .budget-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.6);
+  }
+  .budget-table {
+    background: #fbf8f0;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 10px 24px;
+  }
+  .budget-table .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .budget-table .row:last-child { border-bottom: none; }
+  .budget-table .row.total {
+    border-top: 1px solid var(--ink);
+    margin-top: 4px;
+    padding-top: 16px;
+  }
+  .budget-table .item {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .budget-table .item .num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--ember);
+    font-weight: 500;
+    margin-right: 8px;
+  }
+  .budget-table .amount {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+  .budget-table .row.total .item {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 600;
+    color: var(--ember);
+  }
+  .budget-table .row.total .amount {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .budget-notes {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+    max-width: 780px;
+    line-height: 1.55;
+  }
+
+  /* ——— Item slides (2.1–2.4) ——— */
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .range-pill {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .range-pill .note {
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-weight: 300;
+    margin-left: 8px;
+  }
+
+  .item-bullets {
+    list-style: none;
+    margin-top: 26px;
+    max-width: 860px;
+  }
+  .item-bullets li {
+    padding: 16px 0;
+    padding-left: 32px;
+    position: relative;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .item-bullets li:last-child { border-bottom: none; }
+  .item-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 26px;
+    width: 18px;
+    height: 1px;
+    background: var(--ember);
+  }
+  .item-bullets li strong { font-weight: 600; color: var(--ink); }
+  .item-bullets li .detail {
+    display: block;
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    margin-top: 4px;
+  }
+
+  .item-narrative {
+    margin-top: 28px;
+    padding: 24px 28px;
+    background: #fbf8f0;
+    border-left: 3px solid var(--moss);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    max-width: 860px;
+  }
+
+  /* ——— Launch-ready floor strip (Item 01) ——— */
+  .launch-floors {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+  .launch-floors-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ember);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .launch-floors-lede {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-muted);
+    margin-bottom: 22px;
+    max-width: 820px;
+    line-height: 1.55;
+  }
+  .floor-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .floor-mini {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .floor-mini .fm-caption {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  .floor-mini .fm-img {
+    aspect-ratio: 4 / 3;
+    background: #f0ece3;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .floor-mini .fm-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* ——— Item visuals pair (Item 02) ——— */
+  .item-visuals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+  .item-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .item-visual .iv-img {
+    aspect-ratio: 16 / 10;
+    background: #ede0c0;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .item-visual .iv-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .item-visual .iv-caption {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+
+  /* ——— Slide 2.5 two-column ——— */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 32px;
+    align-items: start;
+  }
+  .two-col .col-left .item-bullets { margin-top: 6px; }
+  .annotated-plan {
+    background: #fbf8f0;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 18px;
+    position: relative;
+  }
+  .annotated-plan .plan-title {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .annotated-plan .plan-stage {
+    position: relative;
+    background: #fff;
+    border: 1px solid var(--line-soft);
+    border-radius: 2px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .annotated-plan .plan-stage img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .annotated-plan .callout {
+    position: absolute;
+    top: 42%;
+    right: 14%;
+    background: rgba(178, 92, 44, 0.96);
+    color: #fff;
+    padding: 7px 12px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 2px;
+    max-width: 180px;
+    line-height: 1.4;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  }
+  .annotated-plan .callout::before {
+    content: '';
+    position: absolute;
+    left: -22px;
+    top: 50%;
+    width: 20px;
+    height: 1px;
+    background: var(--ember);
+  }
+  .annotated-plan .callout::after {
+    content: '';
+    position: absolute;
+    left: -26px;
+    top: calc(50% - 3px);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ember);
+  }
+  .plan-legend {
+    margin-top: 14px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+  }
+
+  /* ——— Footer ——— */
+  .footer {
+    margin-top: 72px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+  .footer-cta {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-muted);
+  }
+
+  /* ——— Responsive ——— */
+  @media print {
+    body { padding: 0; background: white; }
+    .page { box-shadow: none; padding: 40px; }
+    .slide { break-inside: avoid; }
+  }
+  @media (max-width: 900px) {
+    .page { padding: 32px 24px; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 26px; }
+    .zones, .grounds-grid, .options-row, .two-col, .floor-row, .budget, .item-visuals {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .floor-strip { grid-template-columns: 1fr 1fr; }
+    .header { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .meta { text-align: left; }
+    .item-header { flex-direction: column; }
+  }
+
+  /* ═══════════════════════════════════════════════════ DECK MODE ═══ */
+  body.deck { padding: 0; background: var(--bg); overflow-x: hidden; }
+  body.deck .page {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  /* Persistent top nav */
+  body.deck .deck-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(250, 248, 244, 0.94);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  body.deck .deck-brand {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    min-width: 0;
+  }
+  body.deck .deck-brand .mark {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+  body.deck .deck-brand .sub {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  body.deck .deck-counter {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  body.deck .deck-counter .current {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ember);
+    letter-spacing: 0.01em;
+    text-transform: none;
+  }
+  body.deck .deck-counter .divider { color: var(--line); }
+  /* Progress bar */
+  body.deck .deck-progress {
+    position: sticky;
+    top: 50px;
+    z-index: 49;
+    height: 2px;
+    background: var(--line-soft);
+  }
+  body.deck .deck-progress-fill {
+    height: 100%;
+    background: var(--ember);
+    width: 0%;
+    transition: width 0.35s ease;
+  }
+  /* The scrollable stage that contains slides */
+  body.deck .deck-stage {
+    flex: 1;
+    padding: 48px 70px 140px 70px;
+    max-width: 1180px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+  body.deck .slide {
+    display: none;
+    padding: 0;
+    border-top: none;
+    animation: deckFade 0.5s cubic-bezier(0.2, 0.6, 0.2, 1);
+  }
+  body.deck .slide.active { display: block; }
+  body.deck .slide .vision-mark { margin-top: 0; }
+  body.deck .slide-index { display: none; }
+  @keyframes deckFade {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+  /* Hide the original header + section-cover + footer in deck mode; we render them differently */
+  body.deck > .page > .header,
+  body.deck .section-cover,
+  body.deck > .page > .footer { display: none; }
+  /* Hide 3D clubhouse plan in deck mode (we show 2D only in the item 05 slide) — no, keep as is */
+
+  /* Fixed side arrows */
+  body.deck .deck-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.96);
+    color: var(--ember);
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, background 0.2s ease;
+    z-index: 60;
+    user-select: none;
+  }
+  body.deck .deck-arrow:hover:not(:disabled) {
+    color: #fff;
+    background: var(--ember);
+    transform: translateY(-50%) scale(1.06);
+    box-shadow: 0 8px 22px rgba(178, 92, 44, 0.28);
+  }
+  body.deck .deck-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  body.deck .deck-arrow-prev { left: 22px; }
+  body.deck .deck-arrow-next { right: 22px; }
+
+  /* Bottom deck bar: dots + footer text */
+  body.deck .deck-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(250, 248, 244, 0.94);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-top: 1px solid var(--line);
+    padding: 14px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    z-index: 50;
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.06em;
+  }
+  body.deck .deck-footer .deck-footer-cta {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-muted);
+    letter-spacing: 0.01em;
+  }
+  body.deck .deck-dots {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  body.deck .deck-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--line);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    border: none;
+    padding: 0;
+  }
+  body.deck .deck-dot:hover { background: var(--ember-soft); transform: scale(1.2); }
+  body.deck .deck-dot.active { background: var(--ember); transform: scale(1.25); }
+
+  /* Slide-header block inside each slide (persistent brand/meta) */
+  body.deck .deck-slide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 36px;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  body.deck .deck-slide-header .deck-slide-title {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--ember);
+    letter-spacing: 0.02em;
+  }
+  body.deck .deck-slide-header .deck-slide-meta {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  @media (max-width: 900px) {
+    body.deck .deck-stage { padding: 24px 20px 180px 20px; }
+    body.deck .deck-topbar, body.deck .deck-footer { padding: 10px 16px; }
+    body.deck .deck-arrow { width: 44px; height: 44px; font-size: 20px; }
+    body.deck .deck-arrow-prev { left: 8px; }
+    body.deck .deck-arrow-next { right: 8px; }
+    body.deck .deck-brand .sub { display: none; }
+  }
+</style>
+</head>
+<body class="deck">
+<div class="page">
+
+  <!-- ═══════════════════════════════════════════════════ DECK TOP BAR -->
+  <div class="deck-topbar">
+    <div class="deck-brand">
+      <span class="mark">Club Rossi</span>
+      <span class="sub">Homeowner Brief · StayLuxe Vacations · April 2026</span>
+    </div>
+    <div class="deck-counter">
+      <span class="current" id="deckSlideTitle">The Vision</span>
+      <span class="divider">·</span>
+      <span><span id="deckCurrent">01</span> / <span id="deckTotal">11</span></span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ DECK PROGRESS BAR -->
+  <div class="deck-progress">
+    <div class="deck-progress-fill" id="deckProgressFill"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════ HEADER (scroll mode only) -->
+  <header class="header">
+    <div>
+      <div class="brand">StayLuxe Vacations</div>
+      <div class="brand-sub">Homeowner Brief · Rossi Residence</div>
+    </div>
+    <div class="meta">
+      <div><span class="value">Club Rossi</span></div>
+      <div><span class="value">3010 Electric Drive · Homewood, CA</span></div>
+      <div><span class="value">Prepared April 2026</span></div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════ DECK STAGE (slide container) -->
+  <div class="deck-stage">
+
+  <!-- ═══════════════════════════════════════════════════ SECTION 1 — THE VISION -->
+
+  <!-- ——— Slide 1.0 · Title / Concept Frame ——— -->
+  <section class="slide">
+    <div class="slide-index">Section One · The Vision</div>
+    <div class="vision-mark">Concept for Homeowner Review · Not for Construction</div>
+    <div class="hero-eyebrow">The Vision</div>
+    <h1 class="hero-title">Club Rossi</h1>
+    <div class="hero-subtitle">A Nano Resort <em>in Lake Tahoe.</em></div>
+    <p class="lede">What you have at 3010 Electric is not a cabin. It's a destination — a main house, a clubhouse, a studio, grounds with real potential, and a setting that very few properties in Tahoe can match. This is a conceptual North Star to help guide us as we look at incremental improvements for the short term.</p>
+
+    <div class="hero-image">
+      <img src="rossi_elevation_hero.jpg" alt="Rossi House — Front Elevation & Site Plan Concept">
+    </div>
+    <div class="hero-caption">
+      <span>Front Elevation &amp; Site Plan · Concept Study</span>
+      <span class="right">The sketch carries the vision. Everything that follows serves it.</span>
+    </div>
+  </section>
+
+  <!-- ——— Slide 1.1 · The Compound Overview ——— -->
+  <section class="slide">
+    <div class="vision-mark">Concept for Homeowner Review · Not for Construction</div>
+    <div class="section-label">The Property · Three Distinct Zones</div>
+    <h2>Main House. <em>Clubhouse.</em> Grounds.</h2>
+    <p class="section-lede">Most properties compete on bedrooms and bathrooms. Club Rossi competes on something harder to replicate — a full destination experience across three distinct zones. Guests don't just stay here. They inhabit it.</p>
+
+    <div class="zones">
+      <div class="zone">
+        <div class="zone-image" style="background-image: url('rossi_elevation_hero.jpg');"></div>
+        <div class="zone-body">
+          <div class="zone-sub">The Anchor</div>
+          <div class="zone-name">Main House</div>
+          <div class="zone-desc">Primary guest experience. Four beds, living, kitchen, deck. The spaces that every booking turns on — where the property earns its first impression and its last one.</div>
+        </div>
+      </div>
+      <div class="zone">
+        <div class="zone-image" style="background-image: url('Rossi%20Ideation/Club%20House/Game%20Room/Rumor-Over-the-Edge-12-18-23-Lounge-Bar-Web-0d2ea035d6f34c789bac29bd2e40c275.jpg');"></div>
+        <div class="zone-body">
+          <div class="zone-sub">The Differentiator</div>
+          <div class="zone-name">Clubhouse</div>
+          <div class="zone-desc">Entertainment suite, sleeping accommodation, and flex space above the garage. The amenity that separates a destination from a rental — and the reason guests bring friends on the second visit.</div>
+        </div>
+      </div>
+      <div class="zone">
+        <div class="zone-image" style="background-image: url('Rossi%20Ideation/Grounds%20and%20Ammenities/House%20with%20Court.png');"></div>
+        <div class="zone-body">
+          <div class="zone-sub">The Arrival</div>
+          <div class="zone-name">Grounds</div>
+          <div class="zone-desc">The arrival experience — the first and last thing guests see and feel. Pool, sports court, alpine plantings, fire pit, sauna. The grounds are where the resort signal lives.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ——— Slide 1.2 · The Full Vision ——— -->
+  <section class="slide">
+    <div class="vision-mark">Concept for Homeowner Review · Not for Construction</div>
+    <div class="section-label">The Full Vision · Zone-by-Zone</div>
+    <h2>Where the experience <em>begins.</em></h2>
+    <p class="section-lede">Walked zone by zone, from the front elevation to the clubhouse above the garage. Ten pieces that together become a single destination — the grounds set the stage, the interior carries the story, and the clubhouse is the amenity no other property on Electric Avenue has.</p>
+
+    <div class="grounds-grid">
+
+      <div class="ground-item">
+        <div class="ground-photo"><img src="Rossi%20Ideation/Landscaping%20sample%20assets/Sierra%20landscaping.png" alt="Sierra alpine landscaping"></div>
+        <div class="ground-body">
+          <div class="ground-sub">Zone A · Landscaping</div>
+          <div class="ground-name">Sierra / Alpine Plantings</div>
+          <div class="ground-desc">Granite boulder anchors, alpine plant palette — sedum, thyme, penstemon, kinnikinnick — pea gravel and decomposed granite paths. Materials that read as if they came from the ground beneath the house.</div>
+        </div>
+      </div>
+
+      <div class="ground-item">
+        <div class="ground-photo"><img src="Rossi%20Ideation/Landscaping%20sample%20assets/sempervivum-rock-garden-819x1024.jpg" alt="Rock garden with hens and chicks"></div>
+        <div class="ground-body">
+          <div class="ground-sub">Zone A · Materials</div>
+          <div class="ground-name">Three Sierra Materials</div>
+          <div class="ground-desc">Granite, pea gravel, decomposed granite. All locally sourced. No concrete pavers, no imported bluestone, nothing that fights the setting. The ground reads as if it was always this way.</div>
+        </div>
+      </div>
+
+      <div class="ground-item">
+        <div class="ground-photo"><img src="Rossi%20Ideation/Grounds%20and%20Ammenities/Modular%20Tile%20Court%20Graphic.png" alt="Modular tile sports court graphic"></div>
+        <div class="ground-body">
+          <div class="ground-sub">Zone B · Sports Court</div>
+          <div class="ground-name">Modular Tile Court</div>
+          <div class="ground-desc">Modular tile surface, seasonal, removable fencing. Optional basketball hoop for half-court play. Comes up before the snow — no plow conflict, no freeze-thaw cost cycle.</div>
+        </div>
+      </div>
+
+      <div class="ground-item">
+        <div class="ground-photo"><img src="Rossi%20Ideation/Grounds%20and%20Ammenities/Dining%20with%20Lake.jpeg" alt="Outdoor dining overlooking the lake"></div>
+        <div class="ground-body">
+          <div class="ground-sub">Zone C · Outdoor Dining</div>
+          <div class="ground-name">Upper Deck · Intentional Furniture</div>
+          <div class="ground-desc">Upper deck reset with intentional outdoor dining furniture, a shade structure, and sightlines held toward the pines. A meal happens here every night of a booking — the space should earn that.</div>
+        </div>
+      </div>
+
+      <div class="ground-item">
+        <div class="ground-photo"><img src="zoom_annex_sauna.jpg" alt="Architectural sketch · annex above the pool"></div>
+        <div class="ground-body">
+          <div class="ground-sub">Zone D · Wellness</div>
+          <div class="ground-name">Sauna + Hot Tub</div>
+          <div class="ground-desc">Both are already on the property. Restored to full function and dialed in as a wellness pairing — a core Tahoe amenity that guests now expect and that meaningfully lifts shoulder-season bookings.</div>
+        </div>
+      </div>
+
+      <div class="ground-item">
+        <div class="ground-photo"><img src="zoom_firepit.jpg" alt="Architectural sketch · fire pit terrace detail"></div>
+        <div class="ground-body">
+          <div class="ground-sub">Zone E · Gathering</div>
+          <div class="ground-name">Fire Pit Terrace</div>
+          <div class="ground-desc">Steel ring, pea gravel circle, propane feed from the house. The evening gathering anchor — the photograph every guest takes on their first night, and the reason they linger outside.</div>
+        </div>
+      </div>
+
+      <div class="ground-item">
+        <div class="ground-photo"><img src="Rossi%20Ideation/Grounds%20and%20Ammenities/Better%20pool.jpeg" alt="Mod Pools container pool reference"></div>
+        <div class="ground-body">
+          <div class="ground-sub">Zone F · Pool</div>
+          <div class="ground-name">Mod Pools · 8′ × 20′ Container</div>
+          <div class="ground-desc">Above-grade container pool with ipe lounge deck, visible from the front drive. Instantly signals resort. Uses winter covers and a hot spot heater — functional three seasons, dramatic year-round.</div>
+        </div>
+      </div>
+
+      <div class="ground-item">
+        <div class="ground-photo"><img src="zoom_putting_green.jpg" alt="Architectural sketch · chipping and putting green detail"></div>
+        <div class="ground-body">
+          <div class="ground-sub">Zone G · Lawn Play</div>
+          <div class="ground-name">Chipping &amp; Putting Green</div>
+          <div class="ground-desc">Two-tier installation on the east lawn. Low-maintenance synthetic turf, real cup, pitch from anywhere on the property. A guest differentiator that reads luxury without reading country club.</div>
+        </div>
+      </div>
+
+      <div class="ground-item">
+        <div class="ground-photo"><img src="Rossi%20Ideation/Rossi%20Traci%20Assets/Main%20house/3D%20Plans/2nd_floor_3010_electric_avenue_homewood.png" alt="Main house · 3D model reference"></div>
+        <div class="ground-body">
+          <div class="ground-sub">Zone H · Interior</div>
+          <div class="ground-name">Full Interior Design</div>
+          <div class="ground-desc">Right now, the main house has strong bones and an inconsistent story. The move: a <em>single narrative</em> rather than room-by-room decisions — palette, lighting, art, and rugs working together as one decision rather than four. Architecture, window line, and hearth all stay. The goal is narrative cohesion, not reinvention.</div>
+        </div>
+      </div>
+
+      <div class="ground-item">
+        <div class="ground-photo"><img src="Rossi%20Ideation/Club%20House/Game%20Room/Rumor-Over-the-Edge-12-18-23-Lounge-Bar-Web-0d2ea035d6f34c789bac29bd2e40c275.jpg" alt="Clubhouse lounge and bar reference"></div>
+        <div class="ground-body">
+          <div class="ground-sub">Zone I · Clubhouse</div>
+          <div class="ground-name">Upper Suite · Entertainment &amp; Guest</div>
+          <div class="ground-desc">The upstairs unit above the garage, reimagined: a proper en suite bedroom, a lounge that reads as a gathering room, and a bar-height entertaining bench. The amenity that turns a rental into a destination — and the reason guests bring friends on their second visit.</div>
+        </div>
+      </div>
+
+      <div class="ground-item">
+        <div class="ground-photo"><img src="Rossi%20Ideation/Club%20House/Movie%20Room/movie%20room%20sample1.jpg" alt="Movie room reference · theater-style bonus room"></div>
+        <div class="ground-body">
+          <div class="ground-sub">Zone J · Game Room</div>
+          <div class="ground-name">A Room Planned <em>Around You</em></div>
+          <div class="ground-desc">Two directions, one idea: a <strong>movie room</strong> with tiered seating and blackout treatment — or an <strong>arcade, pinball, and simulator</strong> suite. Either way, it's the room guests talk about when they get home. The second-booking amenity.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ——— Bridge ——— -->
+  <section class="slide" style="padding-bottom: 20px;">
+    <div class="bridge">
+      <div class="eyebrow">The Bridge · From Vision to Phase One</div>
+      <h2>Phase One · <em>What we recommend now.</em></h2>
+      <p>That's the destination. We're not asking you to build all of that right now — and we're not suggesting you need to. What we roughed this out for is simple: before recommending anything for the next ninety days, we needed to know that nothing we touch now creates work you'd have to undo later. Everything in Phase One that follows is deliberately chosen because it advances this vision, whether or not you ever go further. If this is all you ever did, the property would still be a meaningful step forward. But it also sets the table cleanly for what comes next.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════ SECTION 2 — PHASE ONE -->
+
+  <div class="section-cover">
+    <div class="section-number">Section Two</div>
+    <div class="eyebrow">Phase One · Interim Recommendations</div>
+    <h1>Five categories. <em>One clear path forward.</em></h1>
+  </div>
+
+  <!-- ——— Slide 2.0 · Summary (OPENS) ——— -->
+  <section class="slide" style="padding-top: 0;">
+    <div class="slide-index">Slide 2.0 · Phase One Summary</div>
+    <div class="section-label">Phase One · Interim Approach</div>
+    <h2>Five categories. <em>One clear path forward.</em></h2>
+    <p class="section-lede">Each of these recommendations was chosen for one reason: maximum impact now, zero conflict with the broader vision later. Item one is the only true requirement to list the property. The remaining four are what separate a good rental from a great one.</p>
+
+    <div class="budget">
+      <div class="budget-figure">
+        <div class="budget-range">$4K – $7K</div>
+        <div class="budget-label">Item 01 · Operational Readiness · Required to List</div>
+      </div>
+      <div class="budget-table">
+        <div class="row">
+          <div class="item"><span class="num">01</span> Operational Readiness</div>
+          <div class="amount">$4K – $7K</div>
+        </div>
+        <div class="row">
+          <div class="item"><span class="num">02</span> Grounds Phase One</div>
+          <div class="amount">$15K – $25K</div>
+        </div>
+        <div class="row">
+          <div class="item"><span class="num">03</span> Sports Court</div>
+          <div class="amount">$15K – $25K</div>
+        </div>
+        <div class="row">
+          <div class="item"><span class="num">04</span> Sauna Repair</div>
+          <div class="amount">$3K – $5K</div>
+        </div>
+        <div class="row">
+          <div class="item"><span class="num">05</span> Clubhouse Upgrade</div>
+          <div class="amount">$10K+</div>
+        </div>
+        <div class="row total">
+          <div class="item">Total Range</div>
+          <div class="amount">$47K – $62K+</div>
+        </div>
+      </div>
+    </div>
+    <p class="budget-notes">Ranges reflect options within each item. Final quotes require signed agreement and full inventory access.</p>
+  </section>
+
+  <!-- ——— Slide 2.1 · Item 01 · Operational Readiness ——— -->
+  <section class="slide">
+    <div class="slide-index">Slide 2.1 · Item 01</div>
+    <div class="section-label">Item 01 · Required</div>
+    <div class="item-header">
+      <h2>Launch-ready <em>from day one.</em></h2>
+      <div class="range-pill">$4,000 – $7,000 <span class="note">plus optional furniture purchases</span></div>
+    </div>
+    <ul class="item-bullets">
+      <li><strong>Bedding &amp; linen standardization</strong><span class="detail">Consistent, updated across all units. Mattress toppers, firm and medium pillow pairs, hotel-grade sheet program.</span></li>
+      <li><strong>Owner storage setup</strong><span class="detail">Bin system and locking storage. Owner items inventoried, labeled, and organized so housekeeping never has to guess.</span></li>
+      <li><strong>StayLuxe kitchen standardization</strong><span class="detail">Full inventory, selective appliance and flatware purchases, pantry stocked to base level across both units.</span></li>
+      <li><strong>Staff requirements</strong><span class="detail">Backup lockboxes, key inventory, supply closet, and orientation for housekeeping and maintenance teams.</span></li>
+      <li><strong>Staging and base-level photography</strong><span class="detail">Listing-ready presentation across both units. The photo set that earns the first thirty bookings.</span></li>
+      <li><strong>Functional design edits</strong><span class="detail">Selective removal or swap of furniture pieces, and replacement of damaged or stained items identified during walk.</span></li>
+    </ul>
+    <div class="item-narrative">
+      This is the foundation. Without it, nothing else matters — the listing will not perform regardless of what else we do. With this alone, the property is rentable this summer.
+    </div>
+
+    <div class="launch-floors">
+      <div class="launch-floors-label">Main House · Floors in Scope</div>
+      <p class="launch-floors-lede">These are the two floors we're prepping for launch. The work here is deliberately light — furniture removal, selective swaps, and a reset to a consistent baseline. No structural moves, no redesign. Just the clean-up that gets the listing ready for summer.</p>
+      <div class="floor-strip">
+        <div class="floor-mini">
+          <div class="fm-caption">Floor One · 2D Plan</div>
+          <div class="fm-img"><img src="Rossi%20Ideation/Rossi%20Traci%20Assets/Main%20house/2D%20Plans/1st_floor_3010_electric_avenue_homewood_with_dim.png" alt="Main house floor 1 · 2D dimensioned plan"></div>
+        </div>
+        <div class="floor-mini">
+          <div class="fm-caption">Floor One · 3D Plan</div>
+          <div class="fm-img"><img src="Rossi%20Ideation/Rossi%20Traci%20Assets/Main%20house/3D%20Plans/2nd_floor_3010_electric_avenue_homewood.png" alt="Main house floor 1 · 3D plan view"></div>
+        </div>
+        <div class="floor-mini">
+          <div class="fm-caption">Floor Two · 2D Plan</div>
+          <div class="fm-img"><img src="Rossi%20Ideation/Rossi%20Traci%20Assets/Main%20house/2D%20Plans/2nd_floor_3010_electric_avenue_homewood_with_dim.png" alt="Main house floor 2 · 2D dimensioned plan"></div>
+        </div>
+        <div class="floor-mini">
+          <div class="fm-caption">Floor Two · 3D Plan</div>
+          <div class="fm-img"><img src="Rossi%20Ideation/Rossi%20Traci%20Assets/Main%20house/3D%20Plans/1st_floor_3010_electric_avenue_homewood.png" alt="Main house floor 2 · 3D plan view"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ——— Slide 2.2 · Item 02 · Grounds Phase One ——— -->
+  <section class="slide">
+    <div class="slide-index">Slide 2.2 · Item 02</div>
+    <div class="section-label">Item 02 · High Impact</div>
+    <div class="item-header">
+      <h2>The arrival experience. <em>Fixed.</em></h2>
+      <div class="range-pill">$15,000 – $25,000</div>
+    </div>
+    <ul class="item-bullets">
+      <li><strong>Fire pit area</strong><span class="detail">Steel ring, pea gravel terrace, propane feature, seating zone. Functional night one, photographs on night two.</span></li>
+      <li><strong>Phase 1 alpine landscaping</strong><span class="detail">Granite boulder anchors, starter plant palette — sedum, thyme, penstemon, kinnikinnick — with a decomposed granite entry path.</span></li>
+      <li><strong>Outdoor dining optimization</strong><span class="detail">Upper deck reset with intentional furniture, a shade structure, and sightlines held toward the pines.</span></li>
+    </ul>
+    <div class="item-narrative">
+      The front of this property is the first thing every guest sees. Right now it's not representing what's inside. This Phase One landscape package changes that — and every element here folds cleanly into the full grounds vision when the time comes.
+    </div>
+
+    <div class="item-visuals">
+      <div class="item-visual">
+        <div class="iv-img"><img src="zoom_firepit.jpg" alt="Fire pit terrace · architectural concept"></div>
+        <div class="iv-caption">Fire pit terrace · architectural concept</div>
+      </div>
+      <div class="item-visual">
+        <div class="iv-img"><img src="Rossi%20Ideation/Landscaping%20sample%20assets/Sierra%20landscaping.png" alt="Alpine plantings · Phase 1 starter palette"></div>
+        <div class="iv-caption">Alpine plantings · Phase 1 starter palette</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ——— Slide 2.3 · Item 03 · Sports Court ——— -->
+  <section class="slide">
+    <div class="slide-index">Slide 2.3 · Item 03</div>
+    <div class="section-label">Item 03 · Owner Priority</div>
+    <div class="item-header">
+      <h2>A sports court <em>that survives Tahoe winters.</em></h2>
+      <div class="range-pill">$15,000 – $25,000 <span class="note">dependent on leveling &amp; optional hoop</span></div>
+    </div>
+    <ul class="item-bullets">
+      <li><strong>Modular tile sports court</strong><span class="detail">Removable, seasonal, designed for alpine climate. Comes up before the snow — no plow conflict, no freeze-thaw damage cycle.</span></li>
+      <li><strong>Removable perimeter fencing</strong><span class="detail">Included in estimate. Goes up and down with the court every spring and fall.</span></li>
+      <li><strong>Optional · Basketball hoop</strong><span class="detail">Permanent or removable, for half-court configuration. Negligible added cost.</span></li>
+      <li><strong>Leveling assessment</strong><span class="detail">Range reflects existing grade. Minor pad work is within the stated number; major re-grading would require a separate conversation.</span></li>
+    </ul>
+    <div class="item-narrative">
+      Mark, you asked us to look at the pickleball court. Here's our honest recommendation: resurfacing the existing surface would look great for one season and need redoing after the first plow. The snow, the plow, the freeze-thaw cycle — it would be a recurring cost. A modular tile system goes in at the start of the season, comes up before the snow, and lasts. It's the right call for this climate, and the fencing bundles into the same estimate.
+    </div>
+  </section>
+
+  <!-- ——— Slide 2.4 · Item 04 · Sauna Repair ——— -->
+  <section class="slide">
+    <div class="slide-index">Slide 2.4 · Item 04</div>
+    <div class="section-label">Item 04 · Quick Win</div>
+    <div class="item-header">
+      <h2>A $3–5K fix for an amenity <em>guests already expect.</em></h2>
+      <div class="range-pill">$3,000 – $5,000</div>
+    </div>
+    <ul class="item-bullets">
+      <li><strong>Insulation upgrade beneath the sauna</strong><span class="detail">The floor is losing heat, which means the existing unit is overworking. Targeted insulation brings it back to spec.</span></li>
+      <li><strong>Specialist assessment</strong><span class="detail">Confirm whether the floor repair alone is sufficient, or whether the heating unit itself needs replacement. Range spans both outcomes.</span></li>
+      <li><strong>Hot tub · No action needed</strong><span class="detail">Functioning as-is. Paired with the sauna, this becomes a full wellness pairing at zero additional cost.</span></li>
+    </ul>
+    <div class="item-narrative">
+      The sauna is already there and guests will absolutely use it. This is a targeted fix that restores it to full function — and at this price point, it's one of the highest-return items on the list.
+    </div>
+  </section>
+
+  <!-- ——— Slide 2.5 · Item 05 · Clubhouse Upgrade (TWO-COLUMN) ——— -->
+  <section class="slide">
+    <div class="slide-index">Slide 2.5 · Item 05</div>
+    <div class="section-label">Item 05 · The Differentiator</div>
+    <div class="item-header">
+      <h2>Turn the upstairs unit <em>into the property's signature amenity.</em></h2>
+      <div class="range-pill">$10,000+ <span class="note">pending contractor scope on wall removal</span></div>
+    </div>
+
+    <div class="two-col">
+      <div class="col-left">
+        <ul class="item-bullets">
+          <li><strong>Wall removal · side bedroom ↔ main living</strong><span class="detail">Expands the gathering space and creates a true en suite for the remaining bedroom. The only structural move on this list.</span></li>
+          <li><strong>Sofa bed with TV in cove</strong><span class="detail">Flexible sleeping and lounge. Adds a sleeping spot without adding a bedroom.</span></li>
+          <li><strong>Luxe board game cabinet · kitchen/dining</strong><span class="detail">Upgrades the entertaining function of the shared area. A small piece of furniture that changes how evenings unfold.</span></li>
+          <li><strong>Minor furniture update</strong><span class="detail">New rug, swap of select chairs. Everything else stays.</span></li>
+          <li><strong>Optional · Pool table or luxury game table</strong><span class="detail">Now or in a later phase. Easily routed in once the wall comes down.</span></li>
+        </ul>
+        <div class="item-narrative" style="margin-top: 24px;">
+          We're still getting the wall scope priced and will have a tighter number for you within the week. The "$10K+" reflects the floor of what's possible — final is contractor-dependent.
+        </div>
+      </div>
+
+      <div class="col-right">
+        <div class="annotated-plan">
+          <div class="plan-title">
+            <span>Clubhouse · 2D Plan</span>
+            <span>Reference</span>
+          </div>
+          <div class="plan-stage">
+            <img src="Rossi%20Ideation/Rossi%20Traci%20Assets/Club%20House/2D%20Plans/all_floors_3030_electric_avenue_unit_2_homewood_with_dim.png" alt="Clubhouse 2D plan">
+          </div>
+          <div class="plan-legend">
+            The interior wall between the small side bedroom and the main living area. Sealing that wall line into the bedroom creates a true en suite and opens the living space for entertaining. Nothing touches the garage; nothing touches the downstairs studio — that is a separate conversation for a later phase.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ——— Slide 2.6 · Summary (CLOSES) ——— -->
+  <section class="slide">
+    <div class="slide-index">Slide 2.6 · Phase One Summary · Close</div>
+    <div class="section-label">Phase One · Interim Approach</div>
+    <h2>Five categories. <em>One clear path forward.</em></h2>
+    <p class="section-lede">That's it. Five items, honest ranges, and nothing on this list conflicts with where Club Rossi is going. Item one gets you listed this summer. The rest is your call on timing and sequencing.</p>
+
+    <div class="budget">
+      <div class="budget-figure">
+        <div class="budget-range">$4K – $7K</div>
+        <div class="budget-label">Item 01 · Operational Readiness · Required to List</div>
+      </div>
+      <div class="budget-table">
+        <div class="row">
+          <div class="item"><span class="num">01</span> Operational Readiness</div>
+          <div class="amount">$4K – $7K</div>
+        </div>
+        <div class="row">
+          <div class="item"><span class="num">02</span> Grounds Phase One</div>
+          <div class="amount">$15K – $25K</div>
+        </div>
+        <div class="row">
+          <div class="item"><span class="num">03</span> Sports Court</div>
+          <div class="amount">$15K – $25K</div>
+        </div>
+        <div class="row">
+          <div class="item"><span class="num">04</span> Sauna Repair</div>
+          <div class="amount">$3K – $5K</div>
+        </div>
+        <div class="row">
+          <div class="item"><span class="num">05</span> Clubhouse Upgrade</div>
+          <div class="amount">$10K+</div>
+        </div>
+        <div class="row total">
+          <div class="item">Total Range</div>
+          <div class="amount">$47K – $62K+</div>
+        </div>
+      </div>
+    </div>
+    <p class="budget-notes">Ranges reflect options within each item. Final quotes require signed agreement and full inventory access. The management agreement is coming separately — that's the next step to get the clock started on the summer calendar.</p>
+  </section>
+
+  </div><!-- /.deck-stage -->
+
+  <!-- ═══════════════════════════════════════════════════ FOOTER (scroll mode only) -->
+  <footer class="footer">
+    <div>Prepared by StayLuxe Vacations · Vision document · Not a binding estimate</div>
+    <div class="footer-cta">Next · Management agreement · 916-508-1152</div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════ DECK NAVIGATION -->
+  <button class="deck-arrow deck-arrow-prev" id="deckPrev" aria-label="Previous slide">&#8592;</button>
+  <button class="deck-arrow deck-arrow-next" id="deckNext" aria-label="Next slide">&#8594;</button>
+
+  <div class="deck-footer">
+    <div class="deck-footer-cta">Prepared for Mark &amp; Lisa Rossi · <em>A conceptual North Star.</em></div>
+    <div class="deck-dots" id="deckDots"></div>
+    <div class="deck-footer-cta" style="text-align: right;">Next · Management agreement · 916-508-1152</div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var slides = document.querySelectorAll('.deck-stage > .slide');
+  if (!slides.length) return;
+
+  var titles = [
+    'The Vision',
+    'Three Distinct Zones',
+    'Where the Experience Begins',
+    'Phase One · Bridge',
+    'Phase One Summary',
+    'Item 01 · Operational Readiness',
+    'Item 02 · Arrival Experience',
+    'Item 03 · Sports Court',
+    'Item 04 · Sauna Fix',
+    'Item 05 · Clubhouse Suite',
+    'Phase One · Close'
+  ];
+
+  var total = slides.length;
+  var idx = 0;
+
+  var totalEl   = document.getElementById('deckTotal');
+  var currentEl = document.getElementById('deckCurrent');
+  var titleEl   = document.getElementById('deckSlideTitle');
+  var progEl    = document.getElementById('deckProgressFill');
+  var prevBtn   = document.getElementById('deckPrev');
+  var nextBtn   = document.getElementById('deckNext');
+  var dotsWrap  = document.getElementById('deckDots');
+
+  totalEl.textContent = String(total).padStart(2, '0');
+
+  // Build dots
+  for (var i = 0; i < total; i++) {
+    var dot = document.createElement('button');
+    dot.className = 'deck-dot';
+    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    dot.setAttribute('data-i', i);
+    dotsWrap.appendChild(dot);
+  }
+  var dots = dotsWrap.querySelectorAll('.deck-dot');
+
+  function show(newIdx) {
+    if (newIdx < 0) newIdx = 0;
+    if (newIdx > total - 1) newIdx = total - 1;
+    slides[idx].classList.remove('active');
+    dots[idx].classList.remove('active');
+    idx = newIdx;
+    slides[idx].classList.add('active');
+    dots[idx].classList.add('active');
+
+    currentEl.textContent = String(idx + 1).padStart(2, '0');
+    titleEl.textContent = titles[idx] || '';
+    progEl.style.width = ((idx + 1) / total * 100) + '%';
+
+    prevBtn.disabled = (idx === 0);
+    nextBtn.disabled = (idx === total - 1);
+
+    // scroll to top of stage so long slides always start at top
+    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+  }
+
+  function next() { show(idx + 1); }
+  function prev() { show(idx - 1); }
+
+  prevBtn.addEventListener('click', prev);
+  nextBtn.addEventListener('click', next);
+  dotsWrap.addEventListener('click', function(e) {
+    var t = e.target.closest('.deck-dot');
+    if (!t) return;
+    show(parseInt(t.getAttribute('data-i'), 10));
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); next(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') { e.preventDefault(); show(0); }
+    else if (e.key === 'End')  { e.preventDefault(); show(total - 1); }
+  });
+
+  // Initialize
+  show(0);
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Club Rossi · Phase One</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* StayLuxe brand */
+    --gold:        #907B3C;
+    --gold-soft:   #B7A06A;
+    --teal:        #2D5E7C;
+    --blue:        #759FBC;
+    --paper:       #F8F8F5;
+    --paper-warm:  #F2EFE6;
+    --ink:         #0C0C0C;
+    --ink-muted:   #4A463F;
+    --ink-soft:    #8C857A;
+
+    /* Clubhouse palette */
+    --charleston:  #2A322F;
+    --london:      #1F2A38;
+    --wood:        #6B4F37;
+    --brass:       #B08D57;
+    --leather:     #8B5A3C;
+
+    --line:        #E5E1D7;
+    --line-soft:   #EFEBE0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ═══════════════════════════════════════════════════ TYPE */
+  h1, h2, h3 {
+    font-family: 'Cormorant Garamond', 'Garamond', serif;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.012em;
+    line-height: 1.08;
+  }
+  h1 { font-size: 76px; }
+  h2 { font-size: 56px; line-height: 1.08; margin-bottom: 16px; }
+  h3 { font-size: 30px; line-height: 1.2; }
+  em { font-style: italic; font-weight: 300; color: var(--gold); }
+  h2 em, h1 em { color: var(--gold); }
+
+  .eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.26em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 26px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .eyebrow.dark { color: var(--gold-soft); }
+  .eyebrow.dark::before { background: var(--gold-soft); }
+
+  .lede {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    line-height: 1.5;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink-muted);
+    max-width: 920px;
+    margin-bottom: 30px;
+  }
+
+  /* ═══════════════════════════════════════════════════ DECK SHELL */
+  .page {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .deck-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(248, 248, 245, 0.94);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+  .deck-brand { display: flex; align-items: baseline; gap: 14px; min-width: 0; }
+  .deck-brand .mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+  }
+  .deck-brand .sub {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--ink-soft);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .deck-counter {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--ink-soft);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .deck-counter .current {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.01em;
+    text-transform: none;
+  }
+  .deck-counter .divider { color: var(--line); }
+
+  .deck-progress {
+    position: sticky;
+    top: 50px;
+    z-index: 49;
+    height: 2px;
+    background: var(--line-soft);
+  }
+  .deck-progress-fill {
+    height: 100%;
+    background: var(--gold);
+    width: 0%;
+    transition: width 0.35s ease;
+  }
+
+  .deck-stage {
+    flex: 1;
+    padding: 48px 56px 140px 56px;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+  /* Full-bleed modifier — extends edge to viewport */
+  .bleed {
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
+    max-width: 100vw;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+  }
+  .slide {
+    display: none;
+    animation: deckFade 0.55s cubic-bezier(0.2, 0.6, 0.2, 1);
+  }
+  .slide.active { display: block; }
+  @keyframes deckFade {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .discipline {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.26em;
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    padding: 6px 12px;
+    border-radius: 1px;
+    font-weight: 500;
+    margin-bottom: 22px;
+    background: rgba(255,255,255,0.6);
+  }
+
+  /* ═══════════════════════════════════════════════════ ARROWS + FOOTER */
+  .deck-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.96);
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, background 0.2s ease;
+    z-index: 60;
+    user-select: none;
+  }
+  .deck-arrow:hover:not(:disabled) {
+    color: #fff;
+    background: var(--gold);
+    transform: translateY(-50%) scale(1.06);
+    box-shadow: 0 8px 22px rgba(144, 123, 60, 0.32);
+  }
+  .deck-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+  .deck-arrow-prev { left: 22px; }
+  .deck-arrow-next { right: 22px; }
+
+  .deck-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(248, 248, 245, 0.94);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-top: 1px solid var(--line);
+    padding: 12px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    z-index: 50;
+    font-size: 11px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+  .deck-footer-cta {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-muted);
+    letter-spacing: 0.01em;
+  }
+  .deck-dots {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .deck-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--line);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    border: none;
+    padding: 0;
+  }
+  .deck-dot:hover { background: var(--gold-soft); transform: scale(1.2); }
+  .deck-dot.active { background: var(--gold); transform: scale(1.3); }
+
+  /* ═══════════════════════════════════════════════════ SCHEMATIC PLACEHOLDER  */
+  /* When the schematic file isn't dropped in yet, .schematic-slot renders a
+     labeled placeholder. The <img> sits on top; onerror hides it; the slot shows through. */
+  .schematic-slot {
+    position: relative;
+    background:
+      repeating-linear-gradient(135deg, #F4F1E8 0 20px, #EAE5D5 20px 22px),
+      linear-gradient(180deg, #F4F1E8 0%, #E5DFCE 100%);
+    overflow: hidden;
+  }
+  .schematic-slot .placeholder-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 24px;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--ink-muted);
+    pointer-events: none;
+  }
+  .schematic-slot .placeholder-label .l1 {
+    font-size: 22px;
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+  .schematic-slot .placeholder-label .l2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.26em;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  .schematic-slot img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .schematic-slot img.broken { display: none; }
+
+  /* ═══════════════════════════════════════════════════ SLIDE 1 · COVER (SIDE-BY-SIDE) */
+  .hero-split {
+    position: relative;
+    min-height: calc(100vh - 110px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--charleston);
+  }
+  .hero-split .schematic-panel {
+    background: #EDE7D2;
+    padding: 48px 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .hero-split .schematic-panel .corner-label {
+    position: absolute;
+    top: 28px;
+    left: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  .hero-split .schematic-panel .corner-label .sheet {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--ink-muted);
+    font-size: 13px;
+    display: block;
+    margin-top: 5px;
+    font-weight: 500;
+  }
+  .hero-split .schematic-panel .schematic-slot {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 2px;
+    box-shadow: 0 14px 38px rgba(12,12,12,0.20);
+    overflow: hidden;
+    background: #F4F1E8;
+    max-width: 760px;
+  }
+  .hero-split .schematic-panel .schematic-slot img {
+    object-fit: contain;
+    background: #F4F1E8;
+  }
+  .hero-split .staylux-mark {
+    position: absolute;
+    bottom: 32px;
+    left: 40px;
+    z-index: 4;
+  }
+  .hero-split .staylux-mark .wordmark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: #0C0C0C;
+    letter-spacing: 0.012em;
+    line-height: 1;
+  }
+  .hero-split .staylux-mark .tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.42em;
+    color: #0C0C0C;
+    font-weight: 600;
+    margin-top: 7px;
+  }
+  .hero-split .text-panel {
+    background: linear-gradient(160deg, var(--charleston) 0%, var(--london) 100%);
+    padding: 80px 72px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .hero-split .text-panel::after {
+    content: '';
+    position: absolute;
+    right: 36px;
+    top: 40px;
+    bottom: 40px;
+    width: 1px;
+    background: rgba(183,160,106,0.18);
+  }
+  .hero-split .text-panel .discipline {
+    color: rgba(255,255,255,0.78);
+    border-color: rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.06);
+    margin-bottom: 20px;
+    align-self: flex-start;
+    font-size: 10.5px;
+    padding: 7px 14px;
+  }
+  .hero-split .text-panel .hero-eyebrow {
+    font-size: 13px;
+    margin-bottom: 26px;
+  }
+  .hero-split .text-panel .hero-title {
+    font-size: 124px;
+    line-height: 0.94;
+    margin-bottom: 8px;
+  }
+  .hero-split .text-panel .hero-subtitle {
+    font-size: 42px;
+    margin-bottom: 32px;
+  }
+  .hero-split .text-panel .hero-bullets {
+    margin: 14px 0 36px;
+  }
+  .hero-split .text-panel .hero-bullets li {
+    font-size: 23px;
+    padding-left: 36px;
+  }
+  .hero-split .text-panel .hero-bullets li::before {
+    width: 24px;
+    top: 18px;
+  }
+  .hero-split .text-panel .hero-meta {
+    margin-top: 28px;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 10.5px;
+  }
+  .hero-split .text-panel .hero-meta .value { font-size: 15px; }
+  .hero-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.34em;
+    color: var(--gold-soft);
+    font-weight: 600;
+    margin-bottom: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 36px;
+    height: 1px;
+    background: var(--gold-soft);
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 124px;
+    font-weight: 400;
+    line-height: 0.94;
+    letter-spacing: -0.022em;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.2;
+    color: var(--gold-soft);
+    margin-bottom: 30px;
+  }
+  .hero-bullets {
+    list-style: none;
+    margin: 12px 0 28px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .hero-bullets li {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    line-height: 1.45;
+    color: rgba(255,255,255,0.94);
+    padding-left: 32px;
+    position: relative;
+  }
+  .hero-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 20px;
+    height: 1px;
+    background: var(--gold-soft);
+  }
+  .hero-bullets li em { color: var(--gold-soft); font-style: italic; }
+  .hero-meta {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    color: rgba(255,255,255,0.72);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-weight: 500;
+  }
+  .hero-meta .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    color: rgba(255,255,255,0.92);
+    font-size: 14px;
+    margin-left: 8px;
+  }
+
+  /* ═══════════════════════════════════════════════════ SLIDE 2 · AT A GLANCE */
+  .glance-stage {
+    position: relative;
+    overflow: hidden;
+    background: var(--charleston);
+    padding: 72px 80px 72px;
+    color: #fff;
+    margin-top: 0;
+    min-height: calc(100vh - 110px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .glance-stage .schematic-slot {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .glance-stage .schematic-slot img {
+    filter: brightness(0.30) saturate(0.55);
+  }
+  .glance-stage .schematic-slot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(42,50,47,0.84) 0%, rgba(31,42,56,0.92) 100%);
+    z-index: 3;
+  }
+  .glance-content { position: relative; z-index: 4; max-width: 1500px; margin: 0 auto; width: 100%; }
+  .glance-content h2 { color: #fff; font-size: 64px; }
+  .glance-content h2 em { color: var(--gold-soft); }
+  .glance-lede {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    line-height: 1.5;
+    font-style: italic;
+    color: rgba(255,255,255,0.88);
+    max-width: 980px;
+    margin-bottom: 26px;
+  }
+  .stream-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin: 36px 0 30px;
+  }
+  .stream {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 3px;
+    padding: 26px 22px 26px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    min-height: 230px;
+  }
+  .stream.decision {
+    background: rgba(144,123,60,0.10);
+    border-color: rgba(183,160,106,0.40);
+  }
+  .stream-tag {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.55);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .stream.decision .stream-tag { color: var(--gold-soft); }
+  .stream-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .stream-name em { font-style: italic; color: var(--gold-soft); }
+  .stream-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--gold-soft);
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.10);
+  }
+  .stream-price .small {
+    font-size: 10.5px;
+    font-style: normal;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    display: block;
+    margin-top: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+  }
+  .stream-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.74);
+  }
+  .stream.decision .stream-desc { color: rgba(255,255,255,0.82); }
+  .glance-anchor {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: rgba(255,255,255,0.82);
+    max-width: 1000px;
+    line-height: 1.55;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.14);
+  }
+
+  /* ═══════════════════════════════════════════════════ SLIDE 3 · MASTER PLAN VISION */
+  .grounds-render {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #f0ebe0;
+    margin-top: 14px;
+    aspect-ratio: 4 / 3;
+    max-height: 64vh;
+  }
+  .grounds-render img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .callout {
+    position: absolute;
+    background: rgba(42,50,47,0.94);
+    color: #fff;
+    padding: 9px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 2px;
+    line-height: 1.35;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+    z-index: 3;
+    white-space: nowrap;
+  }
+  .callout .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold-soft);
+    font-size: 13px;
+    margin-right: 7px;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 500;
+  }
+  .callout-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 4px rgba(144,123,60,0.30), 0 4px 8px rgba(0,0,0,0.25);
+    z-index: 2;
+  }
+  .callout-dot::after {
+    content: '';
+    position: absolute;
+    inset: -16px;
+    border: 1px solid rgba(255,255,255,0.55);
+    border-radius: 50%;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.55; }
+    50% { transform: scale(1.18); opacity: 0.0; }
+  }
+  .grounds-legend {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+  }
+  .legend-item {
+    border-top: 2px solid var(--gold);
+    padding-top: 10px;
+  }
+  .legend-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+  .legend-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .legend-desc {
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+  }
+  .pool-note {
+    margin-top: 18px;
+    padding: 14px 22px;
+    background: var(--paper-warm);
+    border-left: 3px solid var(--teal);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15.5px;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+  .pool-note strong {
+    color: var(--ink);
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  /* ═══════════════════════════════════════════════════ COMPARE COLUMNS (slide 4, 6) */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 22px;
+    margin-top: 22px;
+  }
+  .compare-col {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 14px rgba(12,12,12,0.04);
+  }
+  .compare-col.lean { background: #FBF9F2; }
+  .compare-col.rec {
+    background: linear-gradient(180deg, var(--charleston) 0%, var(--london) 100%);
+    color: #fff;
+    border-color: var(--charleston);
+  }
+  .compare-img {
+    aspect-ratio: 16 / 9;
+    background: var(--paper-warm);
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .compare-col.rec .compare-img { border-bottom-color: rgba(255,255,255,0.10); }
+  .compare-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .compare-img.schematic-slot { background: none; }
+  .compare-body { padding: 28px 30px 32px; flex: 1; display: flex; flex-direction: column; }
+  .compare-tag {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.26em;
+    color: var(--ink-soft);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .compare-col.rec .compare-tag { color: var(--gold-soft); }
+  .compare-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.12;
+    margin-bottom: 4px;
+  }
+  .compare-col.rec .compare-name { color: #fff; }
+  .compare-name em { font-style: italic; color: var(--gold); }
+  .compare-col.rec .compare-name em { color: var(--gold-soft); }
+  .compare-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--gold);
+    margin: 8px 0 18px;
+    line-height: 1;
+  }
+  .compare-col.rec .compare-price { color: var(--gold-soft); }
+  .compare-list {
+    list-style: none;
+    margin: 0 0 18px;
+    padding: 0;
+  }
+  .compare-list li {
+    padding: 11px 0;
+    padding-left: 26px;
+    position: relative;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .compare-col.rec .compare-list li {
+    color: rgba(255,255,255,0.92);
+    border-bottom-color: rgba(255,255,255,0.10);
+  }
+  .compare-list li:last-child { border-bottom: none; }
+  .compare-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 14px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .compare-col.rec .compare-list li::before { background: var(--gold-soft); }
+  .compare-list li.no::before {
+    background: none;
+    content: '—';
+    color: var(--ink-soft);
+    top: 11px;
+    width: auto;
+    height: auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+  }
+  .compare-list li.no { color: var(--ink-soft); }
+  .compare-list strong { font-weight: 600; color: var(--ink); }
+  .compare-col.rec .compare-list strong { color: #fff; }
+  .compare-list .detail {
+    display: block;
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 3px;
+  }
+  .compare-col.rec .compare-list .detail { color: rgba(255,255,255,0.65); }
+  .compare-honesty {
+    margin-top: auto;
+    padding: 16px 18px;
+    background: rgba(144,123,60,0.10);
+    border-left: 2px solid var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+  }
+  .compare-col.rec .compare-honesty {
+    background: rgba(183,160,106,0.14);
+    border-left-color: var(--gold-soft);
+    color: rgba(255,255,255,0.86);
+  }
+
+  /* ═══════════════════════════════════════════════════ SLIDE 5 · CLUBHOUSE FOUNDATION */
+  .vision-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1.3fr;
+    gap: 26px;
+    margin-top: 18px;
+  }
+  .vision-hero {
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--charleston);
+    aspect-ratio: 3 / 4;
+    box-shadow: 0 6px 22px rgba(12,12,12,0.10);
+  }
+  .vision-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .vision-side { display: flex; flex-direction: column; gap: 18px; }
+  .vision-before {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .before-thumb {
+    aspect-ratio: 4 / 3;
+    border-radius: 3px;
+    overflow: hidden;
+    background: var(--paper-warm);
+    position: relative;
+  }
+  .before-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85) brightness(0.92); }
+  .before-thumb .badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.20em;
+    color: #fff;
+    background: rgba(12,12,12,0.6);
+    padding: 3px 7px;
+    border-radius: 1px;
+    font-weight: 600;
+  }
+  .concept-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .concept-pair .before-thumb { aspect-ratio: 4 / 3; }
+  .concept-pair .before-thumb .badge { background: rgba(144,123,60,0.85); }
+  .concept-pair .before-thumb img { filter: none; }
+  .vision-callbox {
+    background: var(--charleston);
+    color: #fff;
+    border-radius: 3px;
+    padding: 24px 28px;
+    margin-top: 4px;
+  }
+  .vision-callbox .label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--gold-soft);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .vision-callbox h3 {
+    color: #fff;
+    font-size: 24px;
+    line-height: 1.18;
+  }
+  .vision-callbox h3 em { color: var(--gold-soft); }
+  .vision-callbox p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.82);
+    margin-top: 6px;
+  }
+
+  /* ═══════════════════════════════════════════════════ SLIDE 7 · ROAD AHEAD */
+  .roadmap {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .phase {
+    display: grid;
+    grid-template-columns: 80px 1.4fr 1fr auto;
+    gap: 26px;
+    align-items: center;
+    padding: 22px 26px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+  }
+  .phase.now {
+    background: linear-gradient(135deg, var(--charleston) 0%, var(--london) 100%);
+    color: #fff;
+    border-color: var(--charleston);
+  }
+  .phase-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-style: italic;
+    color: var(--gold);
+    line-height: 1;
+    font-weight: 500;
+  }
+  .phase.now .phase-num { color: var(--gold-soft); }
+  .phase-body { line-height: 1.4; }
+  .phase-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .phase.now .phase-name { color: #fff; }
+  .phase-desc {
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+  .phase.now .phase-desc { color: rgba(255,255,255,0.78); }
+  .phase-unlock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .phase-bar {
+    width: 100%;
+    height: 7px;
+    background: var(--line-soft);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .phase.now .phase-bar { background: rgba(255,255,255,0.14); }
+  .phase-bar-fill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 4px;
+  }
+  .phase.now .phase-bar-fill { background: var(--gold-soft); }
+  .phase-unlock-label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .phase.now .phase-unlock-label { color: var(--gold-soft); }
+  .phase-unlock-label .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--ink);
+    margin-right: 6px;
+    font-weight: 500;
+  }
+  .phase.now .phase-unlock-label .num { color: #fff; }
+  .phase-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .phase.now .phase-price { color: var(--gold-soft); }
+  .frontload {
+    margin-top: 22px;
+    padding: 22px 26px;
+    background: var(--paper-warm);
+    border-left: 3px solid var(--gold);
+    border-radius: 2px;
+  }
+  .frontload .label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .frontload p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+  }
+  .frontload p em { color: var(--ink); font-style: italic; }
+  .frontload .roi-link {
+    margin-top: 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  /* ═══════════════════════════════════════════════════ SLIDE 8 · PHILOSOPHY  */
+  .philosophy {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--charleston);
+    color: #fff;
+    padding: 60px 64px;
+    margin-top: 8px;
+    min-height: 70vh;
+  }
+  .philosophy::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('Assets%20for%20Claude%20Context/Front%20Elevation%20Mock-up.png');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.32) saturate(0.7);
+    z-index: 0;
+  }
+  .philosophy::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(42,50,47,0.92) 0%, rgba(31,42,56,0.70) 100%);
+    z-index: 1;
+  }
+  .philosophy-inner { position: relative; z-index: 2; }
+  .philosophy .eyebrow { color: var(--gold-soft); }
+  .philosophy .eyebrow::before { background: var(--gold-soft); }
+  .philosophy h2 {
+    color: #fff;
+    font-size: 54px;
+    max-width: 920px;
+    margin-bottom: 18px;
+  }
+  .philosophy h2 em { color: var(--gold-soft); }
+  .philosophy .lede {
+    color: rgba(255,255,255,0.88);
+    font-size: 22px;
+    margin-bottom: 34px;
+    max-width: 880px;
+  }
+  .philo-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 22px;
+  }
+  .philo-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 3px;
+    padding: 26px 28px 28px;
+  }
+  .philo-card.win {
+    background: rgba(144,123,60,0.16);
+    border-color: rgba(183,160,106,0.45);
+  }
+  .philo-card .tag {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: rgba(255,255,255,0.6);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .philo-card.win .tag { color: var(--gold-soft); }
+  .philo-card h3 {
+    color: #fff;
+    font-size: 28px;
+    margin-bottom: 12px;
+    line-height: 1.18;
+  }
+  .philo-card h3 em { color: var(--gold-soft); }
+  .philo-card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16.5px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 12px;
+  }
+  .philo-card p:last-child { margin-bottom: 0; }
+  .philo-card .outcome {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.14);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--gold-soft);
+  }
+  .philo-card.win .outcome { color: #fff; font-style: italic; }
+  .philo-ladder {
+    margin-top: 32px;
+    padding: 22px 28px;
+    background: rgba(255,255,255,0.07);
+    border-left: 3px solid var(--gold-soft);
+    border-radius: 2px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.9);
+    max-width: 920px;
+  }
+
+  /* ═══════════════════════════════════════════════════ SLIDE 9 · DECISION (PER-ITEM) */
+  .decision-table {
+    margin-top: 20px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 14px rgba(12,12,12,0.04);
+  }
+  .dt-header {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    padding: 16px 26px;
+    background: var(--paper-warm);
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+  }
+  .dt-header .col {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  .dt-header .col.lean { color: var(--ink); }
+  .dt-header .col.rec { color: var(--gold); }
+
+  .dt-decision-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    padding: 18px 26px;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: stretch;
+    background: linear-gradient(90deg, rgba(144,123,60,0.04) 0%, rgba(45,94,124,0.04) 100%);
+  }
+  .dt-decision-row .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .dt-decision-row .item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.18;
+  }
+  .dt-decision-row .item-name em { color: var(--gold); font-style: italic; }
+  .dt-decision-row .item-sub {
+    font-size: 11.5px;
+    color: var(--ink-muted);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+  .dt-decision-row .option {
+    padding: 4px 14px;
+    border-left: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .dt-decision-row .option-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .dt-decision-row .option.rec .option-price { color: var(--gold); }
+  .dt-decision-row .option-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .dt-decision-row .option.rec .option-label { color: var(--gold); }
+  .dt-decision-row .option-detail {
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: var(--ink-muted);
+  }
+
+  .dt-static-section {
+    background: #fff;
+  }
+  .dt-static-header {
+    padding: 12px 26px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--ink-soft);
+    font-weight: 600;
+    border-bottom: 1px solid var(--line-soft);
+    border-top: 1px solid var(--line);
+    background: var(--paper-warm);
+  }
+  .dt-static-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    padding: 13px 26px;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: center;
+  }
+  .dt-static-row:last-of-type { border-bottom: none; }
+  .dt-static-row .item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .dt-static-row .item-name .sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-left: 6px;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+  }
+  .dt-static-row .price {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .dt-static-row .price.span2 { grid-column: 2 / 4; text-align: left; padding-left: 14px; border-left: 1px solid var(--line); }
+  .dt-total {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    padding: 22px 26px;
+    background: var(--charleston);
+    color: #fff;
+    align-items: center;
+  }
+  .dt-total .item-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: #fff;
+    font-weight: 600;
+  }
+  .dt-total .lean-total, .dt-total .rec-total {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .dt-total .lean-total { color: rgba(255,255,255,0.85); font-size: 26px; }
+  .dt-total .rec-total { color: var(--gold-soft); font-size: 30px; }
+  .decision-frame {
+    margin-top: 20px;
+    padding: 22px 26px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+  }
+  .decision-frame .label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .decision-frame p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16.5px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+  }
+  .decision-frame p em { color: var(--ink); font-style: italic; }
+  .decision-note {
+    margin-top: 14px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    max-width: 900px;
+    line-height: 1.5;
+  }
+
+  /* ═══════════════════════════════════════════════════ SLIDE 10 · TIMELINE + ASKS */
+  .timeline {
+    position: relative;
+    margin: 24px 0 32px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: var(--line);
+  }
+  .tl-step {
+    position: relative;
+    padding-top: 56px;
+    text-align: center;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .tl-step .dot {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 4px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--gold);
+  }
+  .tl-step.future .dot {
+    background: var(--paper);
+    border-color: var(--paper);
+    box-shadow: 0 0 0 1px var(--gold-soft);
+  }
+  .tl-when {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .tl-what {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .tl-what em { color: var(--gold); font-style: italic; }
+  .tl-detail {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+  }
+  .asks-section {
+    margin-top: 8px;
+  }
+  .asks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .asks-header h3 {
+    font-size: 28px;
+    color: var(--ink);
+  }
+  .asks-header h3 em { color: var(--gold); }
+  .asks-header .meta {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  .asks {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 18px;
+  }
+  .ask {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 24px 26px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: 0 2px 14px rgba(12,12,12,0.04);
+  }
+  .ask.primary {
+    background: linear-gradient(135deg, var(--charleston) 0%, var(--london) 100%);
+    color: #fff;
+    border-color: var(--charleston);
+  }
+  .ask-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 32px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .ask.primary .ask-num { color: var(--gold-soft); }
+  .ask-tag {
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  .ask.primary .ask-tag { color: var(--gold-soft); }
+  .ask-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-top: 4px;
+  }
+  .ask.primary .ask-title { color: #fff; }
+  .ask-title em { color: var(--gold); font-style: italic; }
+  .ask.primary .ask-title em { color: var(--gold-soft); }
+  .ask-detail {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    margin-top: 6px;
+  }
+  .ask.primary .ask-detail { color: rgba(255,255,255,0.82); }
+  .launch-banner {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--charleston);
+    aspect-ratio: 32 / 7;
+    margin: 18px 0 6px;
+  }
+  .launch-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.55) saturate(0.85);
+  }
+  .launch-banner .label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.9);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 26px;
+    letter-spacing: 0.01em;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    text-align: center;
+    padding: 18px;
+  }
+  .launch-banner .label em { color: var(--gold-soft); }
+
+  /* ═══════════════════════════════════════════════════ SLIDE 11 · APPENDIX */
+  .appendix-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.34em;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 2px;
+    font-weight: 700;
+    margin-bottom: 26px;
+    background: var(--charleston);
+  }
+  .appendix-mark::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--gold-soft);
+  }
+  .appendix-mark .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+    color: var(--gold-soft);
+    font-weight: 500;
+  }
+  .return-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 26px;
+    margin-top: 18px;
+  }
+  .return-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    padding: 28px 30px 32px;
+  }
+  .return-card .return-eyebrow {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .return-card h3 {
+    font-size: 26px;
+    color: var(--ink);
+    margin-bottom: 16px;
+    line-height: 1.18;
+  }
+  .return-card h3 em { color: var(--gold); }
+  .return-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 11px 0;
+    border-bottom: 1px dashed var(--line);
+    font-size: 13px;
+  }
+  .return-row:last-of-type { border-bottom: none; }
+  .return-row .what { color: var(--ink-muted); }
+  .return-row .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .return-row .num em { color: var(--gold); font-style: italic; }
+  .return-caveat {
+    margin-top: 16px;
+    padding: 14px 16px;
+    background: var(--paper-warm);
+    border-left: 2px solid var(--ink-soft);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+  }
+  .return-notes {
+    background: var(--charleston);
+    color: #fff;
+    border-radius: 4px;
+    padding: 28px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .return-notes .label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--gold-soft);
+    font-weight: 600;
+  }
+  .return-notes h3 {
+    color: #fff;
+    font-size: 22px;
+    line-height: 1.25;
+  }
+  .return-notes h3 em { color: var(--gold-soft); }
+  .return-notes p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.55;
+  }
+
+  /* ═══════════════════════════════════════════════════ SLIDE HEAD */
+  .slide-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .slide-head .left { max-width: 760px; }
+  .slide-head .right {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-soft);
+    text-align: right;
+    line-height: 1.4;
+  }
+
+  .fine {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    margin-top: 18px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 1100px) {
+    .stream-grid, .grounds-legend { grid-template-columns: repeat(3, 1fr); }
+    .vision-grid, .compare, .return-grid, .philo-split { grid-template-columns: 1fr; }
+    .asks { grid-template-columns: 1fr; }
+    .vision-hero { aspect-ratio: 16/9; }
+    .hero-title { font-size: 86px; }
+    .hero-subtitle { font-size: 28px; }
+    .timeline { grid-template-columns: 1fr 1fr; }
+    .timeline::before { display: none; }
+    .phase { grid-template-columns: 60px 1.4fr; gap: 16px; }
+    .phase-unlock, .phase-price { grid-column: 1 / -1; padding-left: 76px; }
+  }
+  @media (max-width: 900px) {
+    .deck-stage { padding: 24px 20px 180px 20px; }
+    .deck-topbar, .deck-footer { padding: 10px 16px; }
+    .deck-arrow { width: 44px; height: 44px; font-size: 20px; }
+    .deck-arrow-prev { left: 8px; }
+    .deck-arrow-next { right: 8px; }
+    .deck-brand .sub { display: none; }
+    .stream-grid { grid-template-columns: 1fr 1fr; }
+    .vision-before, .concept-pair { grid-template-columns: 1fr 1fr; }
+    .hero-title { font-size: 56px; }
+    h1 { font-size: 42px; }
+    h2 { font-size: 30px; }
+    .dt-decision-row, .dt-static-row, .dt-header, .dt-total { grid-template-columns: 1fr; row-gap: 6px; padding: 14px 18px; }
+    .dt-decision-row .option { border-left: none; border-top: 1px solid var(--line-soft); padding: 8px 0; }
+  }
+
+  .fullscreen-hint {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    z-index: 70;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--ink-soft);
+    background: rgba(255,255,255,0.85);
+    padding: 6px 10px;
+    border-radius: 2px;
+    border: 1px solid var(--line);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="deck-topbar">
+    <div class="deck-brand">
+      <span class="mark">Club Rossi</span>
+      <span class="sub">Phase One · The Build · StayLuxe Vacations</span>
+    </div>
+    <div class="deck-counter">
+      <span class="current" id="deckSlideTitle">Phase One</span>
+      <span class="divider">·</span>
+      <span><span id="deckCurrent">01</span> / <span id="deckTotal">11</span></span>
+    </div>
+  </div>
+
+  <div class="deck-progress">
+    <div class="deck-progress-fill" id="deckProgressFill"></div>
+  </div>
+
+  <div class="deck-stage">
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 1 · COVER -->
+    <section class="slide" data-chapter="Phase One">
+      <div class="hero-split bleed">
+        <div class="schematic-panel">
+          <div class="corner-label">
+            Front Elevation · Landscape Concept
+            <span class="sheet">Sheet A-1.0 · Architectural study · Not for construction</span>
+          </div>
+          <div class="schematic-slot">
+            <div class="placeholder-label">
+              <div class="l1">Schematic · Front Elevation</div>
+              <div class="l2">/Assets for Claude Context/rossi_elevation_hero.jpg</div>
+            </div>
+            <img src="Assets%20for%20Claude%20Context/rossi_elevation_hero.jpg" alt="Schematic · front elevation &amp; landscape concept" onerror="this.classList.add('broken');">
+          </div>
+          <div class="staylux-mark">
+            <div class="wordmark">StayLuxe</div>
+            <div class="tagline">Stay Inspired</div>
+          </div>
+        </div>
+
+        <div class="text-panel">
+          <div class="discipline">Concept for owner review · Not for construction</div>
+          <div class="hero-eyebrow">Phase One · The Build</div>
+          <h1 class="hero-title">Club Rossi</h1>
+          <div class="hero-subtitle"><em>Phase One.</em></div>
+          <ul class="hero-bullets">
+            <li>Master plan · <em>greenlit</em></li>
+            <li>Phase One · <em>fully scoped, options designed</em></li>
+            <li>Awaiting your direction · <em>how far to take it now</em></li>
+          </ul>
+          <div class="hero-meta">
+            <div>Property <span class="value">3010 Electric Drive · Homewood, CA</span></div>
+            <div>For <span class="value">Mark &amp; Lisa Rossi</span></div>
+            <div>Prepared by <span class="value">Traci &amp; Benjamin Ebenezer&nbsp;&nbsp;|&nbsp;&nbsp;StayLuxe Vacations</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 2 · AT A GLANCE -->
+    <section class="slide" data-chapter="At a Glance">
+      <div class="glance-stage bleed">
+        <div class="schematic-slot">
+          <div class="placeholder-label">
+            <div class="l1" style="color: rgba(255,255,255,0.4);">Schematic backdrop</div>
+            <div class="l2" style="color: rgba(255,255,255,0.3);">rossi_elevation_hero.jpg</div>
+          </div>
+          <img src="Assets%20for%20Claude%20Context/rossi_elevation_hero.jpg" alt="" onerror="this.classList.add('broken');">
+        </div>
+        <div class="glance-content">
+          <div class="eyebrow dark">Phase One · The Five Sub-Projects</div>
+          <h2>Five sub-projects. <em>Two decisions.</em></h2>
+          <p class="glance-lede">Three of the five follow the original scope as discussed. The other two — grounds and clubhouse — picked up your feedback on what you wanted included, and now carry some options for you to choose between.</p>
+
+          <div class="stream-grid">
+
+            <div class="stream">
+              <div class="stream-tag">Settled · Required to list</div>
+              <div class="stream-name">Main House MVP</div>
+              <div class="stream-desc">Bedding, owner storage, kitchen baseline, staging, listing photography.</div>
+              <div class="stream-price">$7K<span class="small">Original scope</span></div>
+            </div>
+
+            <div class="stream">
+              <div class="stream-tag">Settled · Confirmed in April</div>
+              <div class="stream-name">Sports Court</div>
+              <div class="stream-desc">Resurface the existing pad — the approach you chose.</div>
+              <div class="stream-price">$12K<span class="small">Original scope</span></div>
+            </div>
+
+            <div class="stream">
+              <div class="stream-tag">Settled · Quick win</div>
+              <div class="stream-name">Sauna</div>
+              <div class="stream-desc">Insulation fix and dial-in. Restored to spec. Paired with the hot tub.</div>
+              <div class="stream-price">$5K<span class="small">Original scope</span></div>
+            </div>
+
+            <div class="stream decision">
+              <div class="stream-tag">Decision · Lean or full</div>
+              <div class="stream-name">Grounds</div>
+              <div class="stream-desc">Tasteful refresh, or the strategic build that brings the golf, hardscape, and lighting forward.</div>
+              <div class="stream-price">$25K — $72K+<span class="small">Lean · Strategic</span></div>
+            </div>
+
+            <div class="stream decision">
+              <div class="stream-tag">Decision · Lean or full</div>
+              <div class="stream-name">Clubhouse</div>
+              <div class="stream-desc">Opened up and tastefully redone, or the full character build.</div>
+              <div class="stream-price">$28K — $58–68K<span class="small">Lean · Full</span></div>
+            </div>
+
+          </div>
+
+          <p class="glance-anchor">Everything here sits inside the master plan you already greenlit. The two decision sub-projects are about how completely we deliver that plan now versus phasing pieces of it later.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 3 · MASTER PLAN VISION -->
+    <section class="slide" data-chapter="The Master Plan · Fully Realized">
+      <div class="slide-head">
+        <div class="left">
+          <div class="discipline">Concept for owner review · Not for construction</div>
+          <div class="eyebrow">The Master Plan · Fully Realized</div>
+          <h2>Club Rossi, <em>fully built out.</em></h2>
+          <p class="lede">This is the end state. The nano resort as designed — grounds carried out, golf brought to the front per your request, the lower terrace shown as either a pool or a sun deck depending on where Phase Three lands. Everything in front of this slide is a path into this picture.</p>
+        </div>
+        <div class="right">Photoreal · 3D render<br>Designed by StayLuxe with Tahoe Sierra build partners</div>
+      </div>
+
+      <div class="grounds-render">
+        <img src="Assets%20for%20Claude%20Context/Front%20Elevation%20Mock-up.png" alt="Master plan vision · photoreal render">
+
+        <div class="callout-dot" style="left: 12%; top: 64%;"></div>
+        <div class="callout" style="left: 14%; top: 56%;"><span class="num">01</span> Alpine plantings</div>
+
+        <div class="callout-dot" style="left: 47%; top: 82%;"></div>
+        <div class="callout" style="left: 47%; top: 90%; transform: translateX(-50%);"><span class="num">02</span> Hardscaped fire pit</div>
+
+        <div class="callout-dot" style="left: 82%; top: 70%;"></div>
+        <div class="callout" style="right: 4%; top: 60%;"><span class="num">03</span> Chipping &amp; putting green</div>
+
+        <div class="callout-dot" style="left: 38%; top: 22%;"></div>
+        <div class="callout" style="left: 14%; top: 14%;"><span class="num">04</span> Lighting &amp; irrigation</div>
+
+        <div class="callout-dot" style="left: 56%; top: 60%;"></div>
+        <div class="callout" style="right: 4%; top: 14%;"><span class="num">05</span> Pool — or lower sun deck</div>
+      </div>
+
+      <div class="grounds-legend">
+        <div class="legend-item">
+          <div class="legend-num">01</div>
+          <div class="legend-name">Alpine plantings</div>
+          <div class="legend-desc">Granite-anchored beds, sedum and penstemon, the palette that reads as if it grew here.</div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-num">02</div>
+          <div class="legend-name">Hardscaped fire pit</div>
+          <div class="legend-desc">Stone surround, gravel circle, propane feed. The evening anchor and the night-one photograph.</div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-num">03</div>
+          <div class="legend-name">Chipping &amp; putting</div>
+          <div class="legend-desc">Prioritized per your request — two-tier synthetic green with a real cup, visible from the drive.</div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-num">04</div>
+          <div class="legend-name">Lighting &amp; irrigation</div>
+          <div class="legend-desc">Low-voltage lighting and drip irrigation under the planting. Keeps year three looking like year one.</div>
+        </div>
+        <div class="legend-item">
+          <div class="legend-num">05</div>
+          <div class="legend-name">Pool — or sun deck</div>
+          <div class="legend-desc">The lower terrace. Held for Phase Three as either a pool or a sun deck with sunbathing and seating.</div>
+        </div>
+      </div>
+
+      <div class="pool-note">
+        <strong>On the pool.</strong> Shown here as part of the long-term master plan. If a pool doesn't materialize, the same footprint becomes a lower-level deck with sunbathing and seating. Either reads finished. Either is Phase Three.
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 4 · GROUNDS · LEAN vs STRATEGIC -->
+    <section class="slide" data-chapter="Grounds · Two Ways There">
+      <div class="slide-head">
+        <div class="left">
+          <div class="eyebrow">The Grounds · Two Ways to Get There</div>
+          <h2>A tasteful refresh, <em>or the strategic build.</em></h2>
+          <p class="lede">Two paths into the master plan. The Lean column is the original Phase One — tasteful, restrained, an honest improvement. The Strategic column is the bigger move now: pushed so far that the pool/sun deck is the only thing left to finish the picture. Nothing in this column gets redone later.</p>
+        </div>
+        <div class="right">Both improve the property meaningfully.<br><em>Strategic just doesn't get revisited.</em></div>
+      </div>
+
+      <div class="compare">
+
+        <div class="compare-col lean">
+          <div class="compare-img schematic-slot">
+            <div class="placeholder-label">
+              <div class="l1">Schematic · Tasteful refresh</div>
+              <div class="l2">rossi_elevation_hero.jpg</div>
+            </div>
+            <img src="Assets%20for%20Claude%20Context/rossi_elevation_hero.jpg" alt="Schematic — tasteful refresh" onerror="this.classList.add('broken');">
+          </div>
+          <div class="compare-body">
+            <div class="compare-tag">Lean · The tasteful refresh</div>
+            <div class="compare-name">The original Phase One.</div>
+            <div class="compare-price">$25K</div>
+            <ul class="compare-list">
+              <li><strong>Decomposed granite paths</strong><span class="detail">Defined routes drive-to-deck — meaningfully cheaper than flagstone, still clean.</span></li>
+              <li><strong>Some alpine plantings, some boulders</strong><span class="detail">Granite-anchored beds at key visual points. Not the full palette, but enough to read intentional.</span></li>
+              <li><strong>Basic pea-gravel fire pit</strong><span class="detail">Functional gathering anchor with chairs around it. No stone surround.</span></li>
+              <li class="no"><strong>No chipping &amp; putting green</strong><span class="detail">You added the green as a priority after the original $25K scope was set. It doesn't fit at this price — the green lives in the Strategic build.</span></li>
+              <li class="no"><strong>No flagstone hardscape</strong></li>
+              <li class="no"><strong>No low-voltage lighting</strong></li>
+              <li class="no"><strong>No irrigation</strong></li>
+            </ul>
+            <div class="compare-honesty">Honestly tasteful. The kind of restraint that reads as intentional. The golf and the lasting hardscape need the larger build to make the numbers work — eventually warrants a revisit.</div>
+          </div>
+        </div>
+
+        <div class="compare-col rec">
+          <div class="compare-img"><img src="Assets%20for%20Claude%20Context/Front%20Elevation%20Mock-up.png" alt="Front elevation as designed"></div>
+          <div class="compare-body">
+            <div class="compare-tag">Strategic · The lasting build</div>
+            <div class="compare-name">The big move <em>now.</em></div>
+            <div class="compare-price">$72K+</div>
+            <ul class="compare-list">
+              <li><strong>Full alpine landscape package</strong><span class="detail">Granite anchors, full plant palette, ground cover, mulch.</span></li>
+              <li><strong>Chipping &amp; putting green</strong><span class="detail">Same as Lean — but inside the finished landscape.</span></li>
+              <li><strong>Flagstone hardscape</strong><span class="detail">Drive to deck to fire pit. Sets the register of the whole property.</span></li>
+              <li><strong>Hardscaped fire pit terrace</strong><span class="detail">Stone surround, gravel circle, bench seating.</span></li>
+              <li><strong>Low-voltage lighting</strong><span class="detail">Path and accent. The fixture that makes the property photograph at dusk.</span></li>
+              <li><strong>Drip irrigation</strong><span class="detail">Under the planting layer. Goes in <em>now</em> because retrofitting later means digging up finished beds.</span></li>
+            </ul>
+            <div class="compare-honesty">What's done is done. Paths, planting, lighting, fire pit — none of this gets retouched later. The pool/sun deck becomes the only thing left, and even if Phase Three never happens, this reads <em>finished.</em></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 5 · CLUBHOUSE FOUNDATION -->
+    <section class="slide" data-chapter="The Clubhouse · Reimagined">
+      <div class="slide-head">
+        <div class="left">
+          <div class="discipline">Concept for owner review · Not for construction</div>
+          <div class="eyebrow">The Clubhouse · Reimagined</div>
+          <h2>The cornerstone of <em>Club Rossi.</em></h2>
+          <p class="lede">The beginning of something special. The clubhouse is what makes this property a destination — not a rental with extra rooms. The wall comes down, the room finds itself, the character lands. What sits between this slide and that finished room is materials and finishes — which Traci is about to walk you through.</p>
+        </div>
+        <div class="right">Materials, finishes, furnishings<br><em>Companion mood board next</em></div>
+      </div>
+
+      <div class="vision-grid">
+
+        <div class="vision-hero">
+          <img src="Rossi%20Clubhouse%20Concept%20Assets%20from%20Canva/corner%20bench%20dream.png" alt="Clubhouse — corner banquette concept">
+        </div>
+
+        <div class="vision-side">
+
+          <div class="vision-before">
+            <div class="before-thumb"><span class="badge">Art · Golf wall</span><img src="Rossi%20Clubhouse%20Concept%20Assets%20from%20Canva/golf%20wall%20art.png" alt="Golf wall art concept" style="filter: none;"></div>
+            <div class="before-thumb"><span class="badge">Paint · Charleston Green</span><img src="Rossi%20Clubhouse%20Concept%20Assets%20from%20Canva/paint%20sample%20charleston%20green.png" alt="Paint swatch · Charleston Green" style="filter: none;"></div>
+          </div>
+
+          <div class="concept-pair">
+            <div class="before-thumb"><span class="badge">Concept · Game table</span><img src="Rossi%20Clubhouse%20Concept%20Assets%20from%20Canva/poker%20game%20table.png" alt="Game table concept"></div>
+            <div class="before-thumb"><span class="badge">Concept · Arched bar</span><img src="Rossi%20Clubhouse%20Concept%20Assets%20from%20Canva/arched%20bar1.png" alt="Bar architecture concept"></div>
+          </div>
+
+          <div class="vision-callbox">
+            <div class="label">Spatial Move · One Decision</div>
+            <h3>One wall down. <em>A larger vision unlocked.</em></h3>
+            <p>The structural move is small. What it unlocks is the room that becomes Club Rossi — lounge to bar to game to gather, one composed space. Bedroom sealed and en-suited. Built-in bar footprint preserved, deferred to Phase Two.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 6 · CLUBHOUSE · LEAN vs FULL -->
+    <section class="slide" data-chapter="Clubhouse · How Far">
+      <div class="slide-head">
+        <div class="left">
+          <div class="eyebrow">The Clubhouse · How Far</div>
+          <h2>Opened up and tastefully redone — <em>or the full character build.</em></h2>
+          <p class="lede">Both paths open the room. The wall comes down in either case. The difference is finish level and furnishings. Furnishings weren't in the April construction quote, so we present them as a discrete owner-discretionary layer — not a markup.</p>
+        </div>
+        <div class="right">The construction line is shared.<br><em>The character line is the choice.</em></div>
+      </div>
+
+      <div class="compare">
+
+        <div class="compare-col lean">
+          <div class="compare-img" style="background-image:url('Rossi%20Clubhouse%20Concept%20Assets%20from%20Canva/simple%20wainscotting.png'); background-size:cover; background-position:center;"></div>
+          <div class="compare-body">
+            <div class="compare-tag">Lean · Opened and tasteful</div>
+            <div class="compare-name">Working room. <em>Respectable surfaces.</em></div>
+            <div class="compare-price">$28K</div>
+            <ul class="compare-list">
+              <li><strong>Wall removal</strong> · $6K<span class="detail">The structural move. Same in both paths.</span></li>
+              <li><strong>Basic wainscoting + paint</strong> · $7K<span class="detail">Simple millwork. Charleston Green on the upper field.</span></li>
+              <li><strong>Basic furniture package</strong> · $15K<span class="detail">Functional. Sofas, dining, a few accents.</span></li>
+              <li class="no"><strong>No ceiling beams</strong><span class="detail">The single biggest character lift — skipped.</span></li>
+              <li class="no"><strong>No gallery / banquette program</strong></li>
+              <li class="no"><strong>No built-in bar</strong><span class="detail">Framed and wired only. Deferred to Phase Two.</span></li>
+            </ul>
+            <div class="compare-honesty">A nice room with the wall open. Reads as <em>a tasteful rental</em> — not yet as Club Rossi.</div>
+          </div>
+        </div>
+
+        <div class="compare-col rec">
+          <div class="compare-img"><img src="Rossi%20Clubhouse%20Concept%20Assets%20from%20Canva/corner%20bench%20dream.png" alt="Full character build"></div>
+          <div class="compare-body">
+            <div class="compare-tag">Full · The character build</div>
+            <div class="compare-name">The room that becomes <em>Club Rossi.</em></div>
+            <div class="compare-price">$58 – 68K</div>
+            <ul class="compare-list">
+              <li><strong>Wall removal</strong> · $6K<span class="detail">The structural move.</span></li>
+              <li><strong>Wainscoting + paint, full</strong> · $20K<span class="detail">Charleston Green and London House. Millwork that earns the room.</span></li>
+              <li><strong>Ceiling beams</strong> · $12K<span class="detail">Exposed warm-wood beams. The single biggest character lift.</span></li>
+              <li><strong>Full furnishings package</strong> · $20 – 30K<span class="detail">Corner banquette, brass-pedestal table, gallery wall, dining, lighting. The Traci board.</span></li>
+              <li><strong>Construction</strong> · $38K · <strong>Furnishings</strong> · $20 – 30K<span class="detail">Separate honest lines. Furnishings are owner-discretionary.</span></li>
+              <li class="no"><strong>Built-in bar</strong> · deferred, built ready-to-add<span class="detail">Same in both paths. Inset bar comes in Phase Two; wall and utilities sitting for it.</span></li>
+            </ul>
+            <div class="compare-honesty">Beams overhead. Wainscoting on the walls. Banquette in the corner. <em>The room that becomes Club Rossi.</em></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 7 · ROAD AHEAD -->
+    <section class="slide" data-chapter="The Road Ahead">
+      <div class="slide-head">
+        <div class="left">
+          <div class="eyebrow">The Road Ahead</div>
+          <h2>Where Phase One sits — <em>and what each step unlocks.</em></h2>
+          <p class="lede">Phase One is the front-load. Done well, it unlocks the majority of the property's potential now. Phase Two finishes the interior story. Phase Three (pool or sun deck) is the optional finisher. Owner-paced — but the earlier you front-load, the harder the math works for you.</p>
+        </div>
+        <div class="right">~$300K all-in over 2 – 3 years<br><em>Owner sets the pace</em></div>
+      </div>
+
+      <div class="roadmap">
+
+        <div class="phase now">
+          <div class="phase-num">01</div>
+          <div class="phase-body">
+            <div class="phase-name">Phase One · Now</div>
+            <div class="phase-desc">Grounds, clubhouse, court, sauna, main house MVP. Listed and earning.</div>
+          </div>
+          <div class="phase-unlock">
+            <div class="phase-unlock-label"><span class="num">~50 – 70%</span> of full potential unlocked</div>
+            <div class="phase-bar"><div class="phase-bar-fill" style="width: 60%;"></div></div>
+          </div>
+          <div class="phase-price">$87 – 180K</div>
+        </div>
+
+        <div class="phase">
+          <div class="phase-num">02</div>
+          <div class="phase-body">
+            <div class="phase-name">Phase Two · Year 2</div>
+            <div class="phase-desc">Signature main house finish + downstairs game room. Interior story closed.</div>
+          </div>
+          <div class="phase-unlock">
+            <div class="phase-unlock-label"><span class="num">~90%</span> of full potential unlocked</div>
+            <div class="phase-bar"><div class="phase-bar-fill" style="width: 90%;"></div></div>
+          </div>
+          <div class="phase-price">~$100K</div>
+        </div>
+
+        <div class="phase">
+          <div class="phase-num">03</div>
+          <div class="phase-body">
+            <div class="phase-name">Phase Three · Optional finisher</div>
+            <div class="phase-desc">Pool — or the lower terrace as a sun deck. The choice that makes it 100%.</div>
+          </div>
+          <div class="phase-unlock">
+            <div class="phase-unlock-label"><span class="num">~100%</span> of full potential</div>
+            <div class="phase-bar"><div class="phase-bar-fill" style="width: 100%;"></div></div>
+          </div>
+          <div class="phase-price">$60 – 80K</div>
+        </div>
+
+      </div>
+
+      <div class="frontload">
+        <div class="label">Why front-loading works</div>
+        <p>Going bigger in Phase One isn't only about the property — it's about the math. <em>Returns ramp now, not in eighteen months.</em> Those returns then carry Phase Two with less owner impact, and Phase Three becomes a totally optional decision when the time comes. If Phase One stays light, the ramp stays gentle and every phase costs the owner the full bill on top of slower revenue.</p>
+        <div class="roi-link">Comp data, payback windows, and stabilized returns → see Appendix</div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 8 · PHILOSOPHY (NEW) -->
+    <section class="slide" data-chapter="Big Moves Win">
+      <div class="philosophy">
+        <div class="philosophy-inner">
+          <div class="eyebrow dark">A note on how destination properties get made</div>
+          <h2>Big moves win. <em>Light touches don't.</em></h2>
+          <p class="lede">The properties that become destinations don't divide the budget evenly across every element. They pick a few signature moves and execute them at the highest level. Everything else waits its turn. That's the lesson from every StayLuxe transformation that's outperformed its market.</p>
+
+          <div class="philo-split">
+
+            <div class="philo-card">
+              <div class="tag">Spread thin</div>
+              <h3>A little of everything.</h3>
+              <p>Light landscaping, light interior, light amenity work — a nice rental in every dimension, signature in none. Photographs decently. Books steadily. Never breaks out.</p>
+              <p>And the longer the property runs at "light," the more comes back as rework when standards eventually rise. Walkways come up. Plantings come out. Furniture gets replaced piece by piece. The bill keeps showing up.</p>
+              <div class="outcome">→ A nicer rental.</div>
+            </div>
+
+            <div class="philo-card win">
+              <div class="tag">Big moves</div>
+              <h3>Fewer things, <em>fully built.</em></h3>
+              <p>The clubhouse becomes Club Rossi. The grounds carry the master plan. Both done at the level that earns hero shots, builds magnetism with the avatar — the guest who books, rebooks, and tells a friend — and stops the property from competing on bedrooms-and-bathrooms.</p>
+              <p>Phase One is the first two signature moves. Phase Two adds the next. Phase Three is the finisher when it makes sense. Done once. No revisits.</p>
+              <div class="outcome">→ A destination.</div>
+            </div>
+
+          </div>
+
+          <div class="philo-ladder">
+            What we recommend, applied: take the grounds and the clubhouse all the way in Phase One. They're the two signature moves on the table. The next slide shows where you can dial that — including any blend across them.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 9 · DECISION · PER-ITEM TABLE -->
+    <section class="slide" data-chapter="Owner Options">
+      <div class="slide-head">
+        <div class="left">
+          <div class="eyebrow">Owner Options · The Decision</div>
+          <h2>Both paths lead to <em>dramatic improvements.</em></h2>
+          <p class="lede">Two decisions sit on the table — the clubhouse and the grounds. You can take either Lean or Full on each, in any combination. Everything else below is the same price either way.</p>
+        </div>
+        <div class="right">Mix and match.<br><em>Heavy where it matters most to you.</em></div>
+      </div>
+
+      <div class="decision-table">
+
+        <div class="dt-header">
+          <div class="col">Decision sub-projects</div>
+          <div class="col lean">Lean</div>
+          <div class="col rec">Full / Strategic</div>
+        </div>
+
+        <div class="dt-decision-row">
+          <div class="item">
+            <div class="item-name">Clubhouse</div>
+            <div class="item-sub">Opened up, or the character build</div>
+          </div>
+          <div class="option lean">
+            <div class="option-label">Lean</div>
+            <div class="option-price">$28K</div>
+            <div class="option-detail">Wall down · basic wainscoting · basic furniture</div>
+          </div>
+          <div class="option rec">
+            <div class="option-label">Full character build</div>
+            <div class="option-price">$58 – 68K</div>
+            <div class="option-detail">Beams · full wainscoting · full furnishings</div>
+          </div>
+        </div>
+
+        <div class="dt-decision-row">
+          <div class="item">
+            <div class="item-name">Landscaping</div>
+            <div class="item-sub">Tasteful refresh, or the strategic build</div>
+          </div>
+          <div class="option lean">
+            <div class="option-label">Lean · refresh</div>
+            <div class="option-price">$25K</div>
+            <div class="option-detail">DG paths · some plantings · basic pit · golf included</div>
+          </div>
+          <div class="option rec">
+            <div class="option-label">Strategic · lasting</div>
+            <div class="option-price">$72K+</div>
+            <div class="option-detail">Flagstone · full palette · lighting · irrigation · hard-scaped pit</div>
+          </div>
+        </div>
+
+        <div class="dt-static-header">Same in either combination</div>
+
+        <div class="dt-static-row">
+          <div class="item-name">Sports court <span class="sub">resurface</span></div>
+          <div class="price span2">$12K</div>
+        </div>
+        <div class="dt-static-row">
+          <div class="item-name">Sauna <span class="sub">repair &amp; dial-in</span></div>
+          <div class="price span2">$5K</div>
+        </div>
+        <div class="dt-static-row">
+          <div class="item-name">Main house MVP <span class="sub">listing readiness</span></div>
+          <div class="price span2">$7K</div>
+        </div>
+        <div class="dt-static-row">
+          <div class="item-name">StayLuxe fee</div>
+          <div class="price span2">$10 – 15K</div>
+        </div>
+
+        <div class="dt-total">
+          <div class="item-name">Total · Phase One range</div>
+          <div class="lean-total">~$87K</div>
+          <div class="rec-total">~$160 – 180K</div>
+        </div>
+
+      </div>
+
+      <div class="decision-frame">
+        <div class="label">What StayLuxe recommends</div>
+        <p>Full on both — for the front-load math and the big-moves principle laid out on the prior slide. That said: <em>any blend is on the table.</em> Heavy clubhouse and light grounds, light clubhouse and full grounds, or all-in across the board. Any of them launches the property. Some build a destination faster than others.</p>
+      </div>
+
+      <p class="decision-note">The Strategic-grounds range top reflects pending fire-pit stonework and bench quotes (~$7K). Furnishings sit inside the clubhouse Full line as a discrete, owner-discretionary layer. Final quotes lock with sign-off.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 10 · TIMELINE + 3 ASKS -->
+    <section class="slide" data-chapter="To Launch">
+      <div class="slide-head">
+        <div class="left">
+          <div class="eyebrow">From Here to Launch</div>
+          <h2>Strategic decisions this week. <em>Ready end of June for July 4 soft launch.</em></h2>
+          <p class="lede">The path is real and tight. Dial setting on grounds and clubhouse over the next few days — contracts and mobilization follow <em>immediately, in parallel.</em> Three to five weeks of orchestrated trade work. Staging. Listing live for the holiday weekend.</p>
+        </div>
+        <div class="right">Detail lives in the Loom walk.<br><em>This slide is the snapshot.</em></div>
+      </div>
+
+      <div class="launch-banner">
+        <img src="Assets%20for%20Claude%20Context/Front%20Elevation%20Mock-up.png" alt="Property — launch context">
+        <div class="label"><em>Three to five weeks of orchestrated work</em> &nbsp;·&nbsp; ready end of June for July 4 availability</div>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-step">
+          <div class="dot"></div>
+          <div class="tl-when">Next few days</div>
+          <div class="tl-what">Strategic budgeting decisions</div>
+          <div class="tl-detail">Dial setting on grounds and clubhouse. Sign-off on the two operational asks.</div>
+        </div>
+        <div class="tl-step">
+          <div class="dot"></div>
+          <div class="tl-when">Immediately after &middot; parallel</div>
+          <div class="tl-what">Sign-offs &amp; mobilization</div>
+          <div class="tl-detail">Trade contracts locked. Materials ordered. Long-lead items in motion. Everyone is lined up — we just need the green light to move.</div>
+        </div>
+        <div class="tl-step future">
+          <div class="dot"></div>
+          <div class="tl-when">Next 3 – 5 weeks</div>
+          <div class="tl-what">3 – 4 teams <em>orchestrated</em></div>
+          <div class="tl-detail">Landscape, clubhouse construction, court resurface, sauna fix — sequenced so trades never block each other.</div>
+        </div>
+        <div class="tl-step future">
+          <div class="dot"></div>
+          <div class="tl-when">End of June</div>
+          <div class="tl-what">Staging &amp; <em>listing live</em></div>
+          <div class="tl-detail">Photography, listing live, first bookings on the calendar for the July 4 weekend.</div>
+        </div>
+      </div>
+
+      <div class="asks-section">
+        <div class="asks-header">
+          <h3>What we need from you · <em>three asks</em></h3>
+          <div class="meta">Largest first</div>
+        </div>
+
+        <div class="asks">
+          <div class="ask primary">
+            <div class="ask-num">01</div>
+            <div class="ask-tag">The big one</div>
+            <div class="ask-title">How far do you want us to take it?</div>
+            <div class="ask-detail">A temperature check. Lean on both, Full on both, or any blend across clubhouse and grounds. We've specced it so even Full-on-both is ready end of June for July 4 — we just need your call so we can lock and move.</div>
+          </div>
+          <div class="ask">
+            <div class="ask-num">02</div>
+            <div class="ask-tag">Operational</div>
+            <div class="ask-title">Any leftover clubhouse flooring stock?</div>
+            <div class="ask-detail">Phase One extends the existing flooring (replacement is Phase Two). If you have leftover from the original install, we'll use it. If not, we'll source a match.</div>
+          </div>
+          <div class="ask">
+            <div class="ask-num">03</div>
+            <div class="ask-tag">Operational</div>
+            <div class="ask-title">Mark's shuffleboard manufacturer?</div>
+            <div class="ask-detail">Contact and lead time. Plus: can they build the shuffleboard-with-integrated-bar concept? That's our inset-bar workaround until the Phase Two built-in.</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="fine">Concept for owner review · Not for construction · Not a binding estimate · Final quotes lock with sign-off</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ SLIDE 11 · APPENDIX · ROI -->
+    <section class="slide" data-chapter="Appendix · ROI">
+      <div class="slide-head">
+        <div class="left">
+          <span class="appendix-mark">Appendix <span class="sub">comp data &amp; payback</span></span>
+          <div class="eyebrow">For reference if it comes up</div>
+          <h2>What comparable transformations <em>are returning their owners.</em></h2>
+          <p class="lede">Held to the back so the main flow stays focused on the decision. The numbers anchor where Club Rossi can land once stabilized, and the payback windows owners should plan around. Portfolio comps are anonymized to protect client confidentiality.</p>
+        </div>
+        <div class="right">Not a hard pitch.<br><em>Context for the decision.</em></div>
+      </div>
+
+      <div class="return-grid">
+
+        <div class="return-card">
+          <div class="return-eyebrow">Comp performance · Stabilized</div>
+          <h3>Two anonymized StayLuxe transformations <em>that anchor the math.</em></h3>
+
+          <div class="return-row"><span class="what">StayLuxe Portfolio · Property A · post-transformation</span><span class="num">$60K → $136K net · <em>+127%</em></span></div>
+          <div class="return-row"><span class="what">StayLuxe Portfolio · Property B · Year 1</span><span class="num">$157K gross · $96K net</span></div>
+          <div class="return-row"><span class="what">Club Rossi · today</span><span class="num">~$50K gross</span></div>
+          <div class="return-row"><span class="what">Club Rossi · stabilized floor</span><span class="num">$200 – 250K gross / $100 – 150K net</span></div>
+          <div class="return-row"><span class="what">Phase One payback</span><span class="num">~18 – 24 months</span></div>
+          <div class="return-row"><span class="what">Full build payback</span><span class="num">~24 – 36 months</span></div>
+
+          <div class="return-caveat">Year 1 is not stabilized — the ramp is real. Stabilization typically lands 24 – 36 months in. The conservative floor above assumes Phase One Strategic + Full clubhouse. Portfolio property names withheld to protect client confidentiality.</div>
+        </div>
+
+        <div class="return-notes">
+          <div class="label">Notes &amp; caveats</div>
+          <h3>How to read these numbers.</h3>
+          <p>Comp returns reflect properties with <em>fewer amenities</em> than Club Rossi will have at Phase One completion. They are floor anchors, not ceilings.</p>
+          <p>The +127% lift on Property A came after a focused transformation on signature moves — not a light refresh across every zone. Big-moves principle, applied.</p>
+          <p>Stabilization assumes professional management (StayLuxe), 12-month booking cadence, and dynamic pricing — all included in the operating arrangement.</p>
+          <p style="color: var(--gold-soft); padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.14); margin-top: 4px;">Full underwriting and comp-by-comp detail available on request.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </div><!-- /.deck-stage -->
+
+  <button class="deck-arrow deck-arrow-prev" id="deckPrev" aria-label="Previous slide">&#8592;</button>
+  <button class="deck-arrow deck-arrow-next" id="deckNext" aria-label="Next slide">&#8594;</button>
+
+  <div class="deck-footer">
+    <div class="deck-footer-cta">Club Rossi · Phase One · <em>For Mark &amp; Lisa Rossi</em></div>
+    <div class="deck-dots" id="deckDots"></div>
+    <div class="deck-footer-cta" style="text-align: right;">StayLuxe Vacations · <em>luxury vacation rental management &amp; property transformation</em></div>
+  </div>
+
+  <div class="fullscreen-hint">F — fullscreen · ← → navigate</div>
+
+</div>
+
+<script>
+(function() {
+  var slides = document.querySelectorAll('.deck-stage > .slide');
+  if (!slides.length) return;
+
+  var titles = [
+    'Phase One',
+    'At a Glance',
+    'The Master Plan · Fully Realized',
+    'Grounds · Two Ways There',
+    'The Clubhouse · Reimagined',
+    'Clubhouse · How Far',
+    'The Road Ahead',
+    'Big Moves Win',
+    'Owner Options',
+    'To Launch',
+    'Appendix · ROI'
+  ];
+
+  var total = slides.length;
+  var idx = 0;
+
+  var totalEl   = document.getElementById('deckTotal');
+  var currentEl = document.getElementById('deckCurrent');
+  var titleEl   = document.getElementById('deckSlideTitle');
+  var progEl    = document.getElementById('deckProgressFill');
+  var prevBtn   = document.getElementById('deckPrev');
+  var nextBtn   = document.getElementById('deckNext');
+  var dotsWrap  = document.getElementById('deckDots');
+
+  totalEl.textContent = String(total).padStart(2, '0');
+
+  for (var i = 0; i < total; i++) {
+    var dot = document.createElement('button');
+    dot.className = 'deck-dot';
+    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    dot.setAttribute('data-i', i);
+    dotsWrap.appendChild(dot);
+  }
+  var dots = dotsWrap.querySelectorAll('.deck-dot');
+
+  function show(newIdx) {
+    if (newIdx < 0) newIdx = 0;
+    if (newIdx > total - 1) newIdx = total - 1;
+    slides[idx].classList.remove('active');
+    dots[idx].classList.remove('active');
+    idx = newIdx;
+    slides[idx].classList.add('active');
+    dots[idx].classList.add('active');
+
+    currentEl.textContent = String(idx + 1).padStart(2, '0');
+    titleEl.textContent = titles[idx] || '';
+    progEl.style.width = ((idx + 1) / total * 100) + '%';
+
+    prevBtn.disabled = (idx === 0);
+    nextBtn.disabled = (idx === total - 1);
+
+    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+  }
+
+  function next() { show(idx + 1); }
+  function prev() { show(idx - 1); }
+
+  prevBtn.addEventListener('click', prev);
+  nextBtn.addEventListener('click', next);
+  dotsWrap.addEventListener('click', function(e) {
+    var t = e.target.closest('.deck-dot');
+    if (!t) return;
+    show(parseInt(t.getAttribute('data-i'), 10));
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); next(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') { e.preventDefault(); show(0); }
+    else if (e.key === 'End')  { e.preventDefault(); show(total - 1); }
+    else if (e.key === 'f' || e.key === 'F') {
+      e.preventDefault();
+      if (!document.fullscreenElement) {
+        (document.documentElement.requestFullscreen || function(){})
+          .call(document.documentElement);
+      } else {
+        (document.exitFullscreen || function(){}).call(document);
+      }
+    }
+  });
+
+  show(0);
+})();
+</script>
+
+</body>
+</html>
